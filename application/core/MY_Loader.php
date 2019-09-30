@@ -34,7 +34,7 @@ class MY_Loader extends CI_Loader {
     public function adicionar_css($css)
     {
         // Adiciona o caminho dos assets no css
-        $arquivo_css = BASEPATH.'/application/assets/personalizado/css/'.$css;
+        $arquivo_css = BASEPATH.'/../application/assets/personalizado/css/'.$css;
 
         // Verifica se o arquivo pode ser lido e adiciona o caminho url do arquivo no array
         if (is_readable($arquivo_css))
@@ -53,7 +53,7 @@ class MY_Loader extends CI_Loader {
     public function adicionar_js($js)
     {
         // Adiciona o caminho dos assets no js
-        $arquivo_js = BASEPATH.'/application/assets/personalizado/js/'.$js;
+        $arquivo_js = BASEPATH.'/../application/assets/personalizado/js/'.$js;
 
         // Verifica se o arquivo pode ser lido e adiciona o caminho url do arquivo no array
         if (is_readable($arquivo_js))

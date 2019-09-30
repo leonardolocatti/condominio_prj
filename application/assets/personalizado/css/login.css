@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+    background: #ebebeb;
+}
+
+#login_usuario,
+#login_senha {
+    background-color: #ffffff;
+    background-size: 1em;
+    background-position: left 10px center;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+
+#login_usuario {
+    background-image: url(../../fontawesome/svgs/solid/user.svg);
+}
+
+#login_senha {
+    background-image: url(../../fontawesome/svgs/solid/lock.svg);
+}
