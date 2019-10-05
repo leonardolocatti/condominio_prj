@@ -22,7 +22,7 @@ class MY_Controller extends CI_Controller {
     {
         if ( ! isset($this->session->usuario))
         {
-            redirect(site_url('clogin'));
+            redirect(site_url('login'));
         }
     }
 }

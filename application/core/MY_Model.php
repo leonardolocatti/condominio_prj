@@ -1,6 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/*
+
+
+Essa classe inteira precisa passar por refatoração
+
+
+
+
+*/
+
+
 class MY_Model extends CI_Model {
 
     // Atributos para auxiliar nas operações com o banco de dados
@@ -111,12 +122,18 @@ class MY_Model extends CI_Model {
     /**
      * Realiza uma busca no banco de dados.
      * 
-     * @param  array $campos Array associativo com os campos e os valores que serão buscados.
+     * @param  array $campos          Array associativo com os campos e os valores que serão buscados.
+     * @param  bool  $buscar_excluido Parâmetro para indicar a busca também pelos registros excluídos.
      * @return array Retorna um array de objetos contendo as informações que combinaram.
      */
-    public function buscar($campos)
+    public function buscar($campos, $buscar_excluido = FALSE)
     {
         $this->db->where($campos);
-        return $this->db->get($nome_tabela);
+
+        if ( ! $buscar_excluido) {
+            $this->db->where($this->campo_exclusao, 0);
+        }
+
+        return $this->db->get($this->nome_tabela)->result();
     }
 }

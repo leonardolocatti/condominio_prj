@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h2 class="text-center mb-5"><i class="fas fa-home"></i> Web Condomínio</h2>
 
             <!-- Início do formulário de login -->
-            <form id="form_login" action="javascript:void(0)" novalidate>
+            <form id="form_login" action="javascript:entrar();" novalidate>
                 
                 <div class="form-group">
                     <input type="text" class="form-control form-control-lg" id="login_usuario" name="login_usuario" autofocus>

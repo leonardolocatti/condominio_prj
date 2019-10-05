@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="<?php echo base_url('application/assets/bootstrap/js/bootstrap.bundle.js') ?>"></script>
 
     <!-- Arquivo principal de JS -->
-    <script src="<?php echo base_url('application/assets/personalizados/js/principal.js') ?>"></script>
+    <script src="<?php echo base_url('application/assets/personalizado/js/principal.js') ?>"></script>
 
     <!-- Arquivos JS personalizados -->
     <?php foreach ($js_array as $js) { ?>
