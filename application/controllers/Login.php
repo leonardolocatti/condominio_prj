@@ -58,4 +58,24 @@ class Login extends CI_Controller {
 
         echo json_encode($resposta);
     }
+
+    /**
+     * Realiza o logout do usuário e retira os dados da sessao.
+     * Método deve ser chamado por Ajax.
+     * 
+     * @return void
+     */
+    public function login_sair()
+    {
+        if (session_destroy())
+        {
+            $resposta['status'] = '1';
+        }
+        else 
+        {
+            $resposta['status'] = '0';
+        }
+
+        echo json_encode($resposta);
+    }
 }

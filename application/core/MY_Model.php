@@ -134,6 +134,6 @@ class MY_Model extends CI_Model {
             $this->db->where($this->campo_exclusao, 0);
         }
 
-        return $this->db->get($this->nome_tabela)->result();
+        return $this->db->get($this->nome_tabela)->row();
     }
 }

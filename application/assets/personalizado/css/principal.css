@@ -1,3 +1,39 @@
+/* Estilos gerais */
+body {
+    background-color: #ebebeb;
+    font-family: 'Helvetica', 'Arial';
+}
+
+/* Estilos do menu */
+#pagina_administracao #item_administracao {
+    border-bottom: 3px solid #4976e6;
+    font-weight: bold;
+    padding: 0.2em;
+}
+
+#pagina_administracao #item_administracao a {
+    color: #ffffff !important;
+}
+
+/* Estilos dos modais principais */
+.modal_erro .modal-header {
+    background-color: #f5dada;
+    border-bottom: 2px solid #e09999;
+}
+
+.modal_sucesso .modal-header {
+
+}
+
+.modal_alerta .modal-header {
+    background-color: #fff3cd;
+    border-bottom: 2px solid #d9bc82;
+}
+
+.modal_informacao .modal-header {
+
+}
+
 /* Estilos do rodapé */
 footer .navbar.fixed-bottom {
     background-color: #b4b8bf;

@@ -4,6 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class MY_Controller extends CI_Controller {
 
     /**
+     * MY_Loader
+     * 
+     * @var MY_Loader
+     */
+    public $load;
+
+    /**
      * Construtor chama o método para verificar se o usuário tem uma sessão válida.
      */
     public function __construct()

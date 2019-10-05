@@ -60,7 +60,7 @@ class Usuario_Model extends MY_Model {
 
         $resposta_usuario = $this->buscar($campos);
 
-        return password_verify($usuario_senha, $resposta_usuario[0]->usuario_senha);
+        return password_verify($usuario_senha, $resposta_usuario->usuario_senha);
     }
 
     /**
@@ -77,9 +77,10 @@ class Usuario_Model extends MY_Model {
 
         $resposta_usuario = $this->buscar($campos);
 
-        $obj_usuario = new Usuario_Model();
-        $obj_usuario->usuario_id = $resposta_usuario[0]->usuario_id;
-        $obj_usuario->usuario_login = $resposta_usuario[0]->usuario_login;
+        $obj_usuario = new stdClass();
+        $obj_usuario->usuario_id    = $resposta_usuario->usuario_id;
+        $obj_usuario->usuario_login = $resposta_usuario->usuario_login;
+        $obj_usuario->usuario_tipo  = $resposta_usuario->usuario_tipo;
 
         return $obj_usuario;
     }

@@ -1,3 +1,6 @@
+// Controle do número do modal
+var numero_modal = 0;
+
 /**
  * Valida o campo passado verificando se está vazio.
  * 
@@ -88,14 +91,14 @@ function exibir_modal (botoes, tipo, titulo, mensagem, funcao_ok_sim = null, fun
             break;
         case 'sim_nao':
             botoes_modal  = '<button type="button" class="btn btn-sm btn-outline-danger btn_cancelar_nao" data-dismiss="modal" id="botao_nao">Não</button>';
-            botoes_modal += '<button type="button" class="btn btn-sm btn-outline btn_ok_sim" data-dismiss="modal" id="botao_sim">Sim</button>';
+            botoes_modal += '<button type="button" class="btn btn-sm btn-outline-success btn_ok_sim" data-dismiss="modal" id="botao_sim">Sim</button>';
             break;
     }
             
     // Monta o HTML do modal que será exibido
     var modal = '';
 
-    modal += '<div class="modal fade ' + classe_modal + '" id="modal_principal" tabindex="-1" role="dialog" aria-hidden="true">';
+    modal += '<div class="modal fade ' + classe_modal + '" id="modal_principal_' + numero_modal +'" tabindex="-1" role="dialog" aria-hidden="true">';
     modal +=     '<div class="modal-dialog modal-dialog-centered modal-sm" role="document">';
     modal +=         '<div class="modal-content">';
     modal +=             '<div class="modal-header">';
@@ -116,22 +119,61 @@ function exibir_modal (botoes, tipo, titulo, mensagem, funcao_ok_sim = null, fun
 
     // Adiciona o modal na tag HTML e exibe
     $('html').append(modal);
-    $('#modal_principal').modal('show');
+    $('#modal_principal_' + numero_modal).modal('show');
 
     // Adiciona as funções nos eventos de click dos botões
-    $('.btn_ok_sim').on('click', function() {
+    $('#modal_principal_' + numero_modal + ' .btn_ok_sim').on('click', function() {
         if (typeof funcao_ok_sim === 'function') {
             funcao_ok_sim();
         }
     });
-    $('.btn_cancelar_nao').on('click', function() {
+    $('#modal_principal_' + numero_modal + ' .btn_cancelar_nao').on('click', function() {
         if (typeof funcao_cancelar_nao === 'function') {
             funcao_cancelar_nao();
         }
     });
-    
+
     // Remove o modal do html depois de fechado
-    $('#modal_principal').on('hidden.bs.modal', function () {
+    $('#modal_principal_' + numero_modal).on('hidden.bs.modal', function () {
         $(this).remove();
+        numero_modal--;
     });
+
+    numero_modal++;
+}
+
+/**
+ * Envia um pedido de logout.
+ * Caso o logout seja realizado redireciona para a página de login.
+ */
+function sair() {
+    exibir_modal('sim_nao', 'alerta', 'Logout', 'Tem certeza que deseja sair?', 
+        function () {
+            $.ajax({
+                url: site_url + '/login/login_sair',
+                type: 'post',
+                dataType: 'json',
+                data: {
+
+                }
+            })
+            .done(function (resposta) {
+                console.log(resposta);
+                switch (resposta.status) {
+                    case '1':
+                        window.location.href = site_url + '/login';
+                        break;
+                    case '0':
+                        exibir_modal('ok', 'alerta', 'Erro ao sair', 'Não foi possível sair.');
+                        break;
+                    default: 
+                        exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: Resposta inválida.');
+                        break;
+                }
+            })
+            .fail(function (erro) {
+                exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText);
+            });
+        }
+    );
 }
