@@ -5,13 +5,15 @@ body {
 }
 
 /* Estilos do menu */
-#pagina_administracao #item_administracao {
+#pagina_administracao #item_administracao,
+#pagina_home #item_home {
     border-bottom: 3px solid #4976e6;
     font-weight: bold;
     padding: 0.2em;
 }
 
-#pagina_administracao #item_administracao a {
+#pagina_administracao #item_administracao a,
+#pagina_home #item_home a {
     color: #ffffff !important;
 }
 
@@ -22,7 +24,8 @@ body {
 }
 
 .modal_sucesso .modal-header {
-
+    background-color: #e0fadb;
+    border-bottom: 2px solid #c5f7bc;
 }
 
 .modal_alerta .modal-header {
@@ -32,6 +35,57 @@ body {
 
 .modal_informacao .modal-header {
 
+}
+
+/* Estilos das caixas de conteúdo */
+.caixa_titulo {
+    background-color: #d4d2d2;
+    border: 2px solid #d9d9d9;
+    border-bottom: 2px solid #93b0db;
+    border-top-left-radius: 1.2em;
+    border-top-right-radius: 1.2em;
+    padding: 1em;
+    padding-bottom: 0.5em;
+}
+
+.caixa_conteudo {
+    background-color: #ffffff;
+    border: 2px solid #d9d9d9;
+    border-bottom-left-radius: 1.2em;
+    border-bottom-right-radius: 1.2em;
+    border-top: none;
+    padding: 1em;
+}
+
+/* Estilos dos modais de cadastro/edição */
+.modal_cadastro .modal-content {
+    background-color: #ebebeb;
+    border: 2px slod #d9d9d9;
+    border-radius: 1.2em;
+}
+
+.modal_cadastro .modal-header {
+    background-color: #d4d2d2;
+    border: 2px solid #d9d9d9;
+    border-bottom: 2px solid #93b0bd;
+    border-top-left-radius: 1.2em;
+    border-top-right-radius: 1.2em;
+    padding: 1em;
+    padding-bottom: 0.5em;
+}
+
+/* Estilos das tabelas */
+.dataTables_wrapper .dataTables_processing {
+    background: none;
+    border: 0;
+}
+
+table thead tr th {
+    background-color: #d9d9d9;
+}
+
+table tbody tr:hover td {
+    background-color: #bfcce0;
 }
 
 /* Estilos do rodapé */

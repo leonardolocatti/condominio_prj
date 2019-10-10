@@ -1,17 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
-
-
-Essa classe inteira precisa passar por refatoração
-
-
-
-
-*/
-
-
 class MY_Model extends CI_Model {
 
     // Atributos para auxiliar nas operações com o banco de dados
@@ -62,11 +51,11 @@ class MY_Model extends CI_Model {
     public function inserir()
     {
         // Insere as informações referentes ao cadastro
-        $this->$campo_data_cadastro    = date('Y-m-d H:i:s');
-        $this->$campo_usuario_cadastro = $this->session->usuario->usuario_id;
+        $this->{$this->campo_data_cadastro}    = date('Y-m-d H:i:s');
+        $this->{$this->campo_usuario_cadastro} = $this->session->usuario->usuario_id;
 
         // Tenta inserir o registro no banco e verifica
-        if ($this->db->insert($nome_tabela, $this))
+        if ($this->db->insert($this->nome_tabela, $this))
         {
             return $this->db->insert_id();
         }
@@ -83,12 +72,12 @@ class MY_Model extends CI_Model {
     public function atualizar()
     {
         // Insere as informações referentes a atualização
-        $this->$campo_data_modificacao    = date('Y-m-d H:i:s');
-        $this->$campo_usuario_modificacao = $this->session->usuario->usuario_id;
+        $this->{$this->campo_data_modificacao}    = date('Y-m-d H:i:s');
+        $this->{$this->campo_usuario_modificacao} = $this->session->usuario->usuario_id;
 
         // Tenta atualizar o registro no banco
-        $this->db->where($campo_chave_primaria, $this->$campo_chave_primaria);
-        return $this->db->update($nome_tabela, $this);
+        $this->db->where($this->campo_chave_primaria, $this->{$this->campo_chave_primaria});
+        return $this->db->update($this->nome_tabela, $this);
     }
 
     /**
@@ -96,16 +85,16 @@ class MY_Model extends CI_Model {
      * 
      * @return bool Se foi excluído retorna TRUE, caso contrário retorna FALSE.
      */
-    public function deletar()
+    public function excluir()
     {
         // Insere as informações referentes a exclusão
-        $this->$campo_data_exclusao    = date('Y-m-d H:i:s');
-        $this->$campo_usuario_exclusao = $this->session->usuario->usuario_id;
+        $this->{$this->campo_data_exclusao}    = date('Y-m-d H:i:s');
+        $this->{$this->campo_usuario_exclusao} = $this->session->usuario->usuario_id;
         
         // Tenta realizar a exclusão lógica no banco
-        $this->$campo_exclusao = '1';
-        $this->db->where($campo_chave_primaria, $this->$campo_chave_primaria);
-        return $this->db->update($nome_tabela, $this);
+        $this->{$this->campo_exclusao} = '1';
+        $this->db->where($this->campo_chave_primaria, $this->{$this->campo_chave_primaria});
+        return $this->db->update($this->nome_tabela, $this);
     }
 
     /**
@@ -115,8 +104,8 @@ class MY_Model extends CI_Model {
      */
     public function recuperar()
     {
-        $this->db->where($campo_chave_primaria, $this->$campo_chave_primaria);
-        return $this->db->get($nome_tabela);
+        $this->db->where($this->campo_chave_primaria, $this->{$this->campo_chave_primaria});
+        return $this->db->get($this->nome_tabela)->row();
     }
 
     /**

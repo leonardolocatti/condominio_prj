@@ -121,22 +121,23 @@ function exibir_modal (botoes, tipo, titulo, mensagem, funcao_ok_sim = null, fun
     $('html').append(modal);
     $('#modal_principal_' + numero_modal).modal('show');
 
-    // Adiciona as funções nos eventos de click dos botões
-    $('#modal_principal_' + numero_modal + ' .btn_ok_sim').on('click', function() {
-        if (typeof funcao_ok_sim === 'function') {
-            funcao_ok_sim();
-        }
+    // Armazena qual botão foi clicado
+    var botao_clicado;
+    $('#modal_principal_' + numero_modal + ' .btn_ok_sim').on('click', function () {
+        botao_clicado = 'btn_ok_sim';
     });
-    $('#modal_principal_' + numero_modal + ' .btn_cancelar_nao').on('click', function() {
-        if (typeof funcao_cancelar_nao === 'function') {
-            funcao_cancelar_nao();
-        }
+    $('#modal_principal_' + numero_modal + ' .btn_cancelar_nao').on('click', function () {
+        botao_clicado = 'btn_cancelar_nao';
     });
 
-    // Remove o modal do html depois de fechado
+    // Executa as funções no fim do modal
     $('#modal_principal_' + numero_modal).on('hidden.bs.modal', function () {
-        $(this).remove();
-        numero_modal--;
+        if (botao_clicado == 'btn_ok_sim' && typeof funcao_ok_sim === 'function') {
+            funcao_ok_sim();
+        }
+        if (botao_clicado == 'btn_cancelar_nao' && typeof funcao_cancelar_nao === 'function') {
+            funcao_cancelar_nao();
+        }
     });
 
     numero_modal++;

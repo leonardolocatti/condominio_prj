@@ -23,6 +23,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- Links de acesso -->
         <ul class="navbar-nav mr-auto">
 
+            <li class="nav-item" id="item_home">
+                <a class="nav-link" href="<?php echo site_url('home') ?>">
+                    <i class="fas fa-home mr-1"></i>
+                    Home
+                </a>
+            </li>
+
             <?php if ($this->session->usuario->usuario_tipo === 'administrador') { ?>
                 <li class="nav-item" id="item_administracao">
                     <a class="nav-link" href="<?php echo site_url('administracao') ?>">
