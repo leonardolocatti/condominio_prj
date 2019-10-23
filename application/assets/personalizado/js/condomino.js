@@ -15,6 +15,7 @@ function carregar_condomino_tabela () {
             'serverSide': true,
             'searching': false,
             'destroy': true,
+            'autoWidth': false,
             'language': {
                 'url': base_url + '/application/assets/datatables/portugues.json',
             },
@@ -27,11 +28,11 @@ function carregar_condomino_tabela () {
                 },
             },
             'columns': [
-                { 'title': 'ID', 'className': 'align-middle', 'name': 'condomino.condomino_id', 'data': 'condomino_id' },
+                { 'title': 'ID', 'className': 'align-middle', 'name': 'condomino.condomino_id', 'data': 'condomino_id', 'width': '30px' },
                 { 'title': 'Nome', 'className': 'align-middle', 'name': 'condomino.condomino_nome', 'data': 'condomino_nome' },
                 { 'title': 'CPF', 'className': 'align-middle', 'name': 'condomino.condomino_cpf', 'data': 'condomino_cpf' },
                 { 'title': 'Lote', 'className': 'align-middle', 'name': 'lote.lote_numero', 'data': 'condomino_lote' },
-                { 'title': 'Opções', 'className': 'align-middle', 'data': 'opcoes', 'sortable': false, 'width': '80px'},
+                { 'title': 'Opções', 'className': 'align-middle', 'data': 'opcoes', 'sortable': false, 'width': '60px'},
             ]
         });
     }

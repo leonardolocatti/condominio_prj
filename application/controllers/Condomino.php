@@ -76,8 +76,16 @@ class Condomino extends MY_Controller {
         }
         else
         {
-            if ($obj_condomino->inserir() > 0)
+            if (($id_condomino = $obj_condomino->inserir()) > 0)
             {
+                // Criar usuário para o condômino
+                $this->load->model('Usuario_Model');
+                $obj_usuario = new Usuario_Model();
+
+                $obj_usuario->usuario_login = $this->input->post('condomino_cpf');
+                $obj_usuario->usuario_senha = password_hash($this->input->post('condomino_cpf'), PASSWORD_DEFAULT);
+                $obj_usuario->inserir();
+
                 $resposta['status']   = '1';
                 $resposta['mensagem'] = 'Condômino cadastrado com sucesso.';
             }

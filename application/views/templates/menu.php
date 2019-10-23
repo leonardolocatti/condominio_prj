@@ -30,6 +30,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </a>
             </li>
 
+            <li class="nav-item" id="item_reuniao">
+                <a class="nav-link" href="<?php echo site_url('reuniao') ?>">
+                    <i class="fas fa-clipboard-list mr-1"></i>
+                    Reunião
+                </a>
+            </li>
+
             <?php if ($this->session->usuario->usuario_tipo === 'administrador') { ?>
                 <li class="nav-item" id="item_administracao">
                     <a class="nav-link" href="<?php echo site_url('administracao') ?>">

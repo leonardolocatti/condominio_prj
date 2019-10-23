@@ -6,14 +6,16 @@ body {
 
 /* Estilos do menu */
 #pagina_administracao #item_administracao,
-#pagina_home #item_home {
+#pagina_home #item_home,
+#pagina_reuniao #item_reuniao {
     border-bottom: 3px solid #4976e6;
     font-weight: bold;
     padding: 0.2em;
 }
 
 #pagina_administracao #item_administracao a,
-#pagina_home #item_home a {
+#pagina_home #item_home a,
+#pagina_reuniao #item_reuniao a {
     color: #ffffff !important;
 }
 
