@@ -23,9 +23,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         Lotes
                                     </a>
                                     <a class="nav-link" data-toggle="pill" href="#condominos" role="tab" 
-                                            aria-controls="condominos" aria-selected="true">
+                                            aria-controls="condominos" aria-selected="false">
                                         <i class="fas fa-user mr-1"></i>
                                         Condôminos
+                                    </a>
+                                    <a class="nav-link" data-toggle="pill" href="#areas_comuns" role="tab"
+                                            aria-controls="areas_comuns" aria-selected="false">
+                                        <i class="fas fa-dumbbell mr-1"></i>
+                                        Áreas Comuns
                                     </a>
                                 </div>
                             </div> <!-- Fim da barra de navegação com as opções de administração -->
@@ -39,6 +44,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="tab-pane" id="condominos" role="tabpanel">
                                         <?php echo $view_condomino ?>
                                     </div>
+                                    <div class="tab-pane" id="areas_comuns" role="tabpanel">
+                                        <?php echo $view_areas_comuns ?>
+                                    </div>  
                                 </div>
                             </div> <!-- Fim dos conteúdos exibidos ao clicar nas abas da barra de navegação -->
                         </div>
