@@ -13,6 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- jQuery JS -->
     <script src="<?php echo base_url('application/assets/jquery/jquery-3.4.1.js') ?>"></script>
 
+    <!-- jQuery Mask Plugin -->
+    <script src="<?php echo base_url('application/assets/jquery/plugins/mask_plugin/jquery.mask.js') ?>"></script>
+
     <!-- DataTables JS -->
     <script src="<?php echo base_url('application/assets/datatables/datatables.js') ?>"></script>
 

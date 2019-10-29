@@ -32,6 +32,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <i class="fas fa-dumbbell mr-1"></i>
                                         Áreas Comuns
                                     </a>
+                                    <a class="nav-link" data-toggle="pill" href="#funcionarios" role="tab"
+                                            aria-controls="funcionarios" aria-selected="false">
+                                        <i class="fas fa-user-tie mr-1"></i>
+                                        Funcionários
+                                    </a>
                                 </div>
                             </div> <!-- Fim da barra de navegação com as opções de administração -->
 
@@ -46,7 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                     <div class="tab-pane" id="areas_comuns" role="tabpanel">
                                         <?php echo $view_areas_comuns ?>
-                                    </div>  
+                                    </div>
+                                    <div class="tab-pane" id="funcionarios" role="tabpanel">
+                                        <?php echo $view_funcionario ?>
+                                    </div>
                                 </div>
                             </div> <!-- Fim dos conteúdos exibidos ao clicar nas abas da barra de navegação -->
                         </div>

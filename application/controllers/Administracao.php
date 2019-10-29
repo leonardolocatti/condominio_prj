@@ -33,11 +33,26 @@ class Administracao extends MY_Controller {
         $view_areas_comuns = $this->load->view('area_comum', array(), TRUE);
         $this->load->adicionar_js('area_comum.js');
 
+        // Carrega os cargos dos funcionários que serão colocados no dropdown dos Funcionários
+        $this->lang->load('funcionario');
+        $cargos_dropdown = $this->lang->line('funcionario_cargos');
+        $cargos_dropdown = array('' => 'Selecione um cargo') + $cargos_dropdown;
+
+        // Array com as variáveis passadas para a view de administração de Funcionários
+        $variaveis_funcionario = array(
+            'cargos_dropdown' => $cargos_dropdown,
+        );
+
+        // View de administração de funcionários
+        $view_funcionario = $this->load->view('funcionario', $variaveis_funcionario, TRUE);
+        $this->load->adicionar_js('funcionario.js');
+
         // Array com as variáveis passadas para a view de Administração
         $variaveis_administracao = array(
             'view_lote'         => $view_lote,
             'view_condomino'    => $view_condomino,
             'view_areas_comuns' => $view_areas_comuns,
+            'view_funcionario'  => $view_funcionario,
         );
 
         $this->load->setar_titulo('Administração');
