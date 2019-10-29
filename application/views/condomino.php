@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="condomino_cpf">CPF</label>
-                                <input type="text" class="form-control" id="condomino_cpf" name="condomino_cpf">
+                                <input type="text" class="form-control" id="condomino_cpf" name="condomino_cpf" data-mask="000.000.000-00">
                             </div>
                         </div>
                         <div class="col-6">

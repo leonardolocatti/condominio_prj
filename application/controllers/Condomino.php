@@ -30,7 +30,7 @@ class Condomino extends MY_Controller {
 
             $condominos[$i]['condomino_id']   = $condomino->condomino_id;
             $condominos[$i]['condomino_nome'] = $condomino->condomino_nome;
-            $condominos[$i]['condomino_cpf']  = $condomino->condomino_cpf;
+            $condominos[$i]['condomino_cpf']  = cpf($condomino->condomino_cpf);
             $condominos[$i]['condomino_lote'] = $condomino->condomino_lote;
             $condominos[$i]['opcoes']         = $opcoes;
 
@@ -56,10 +56,10 @@ class Condomino extends MY_Controller {
         $this->load->model('Condomino_Model');
         $obj_condomino = new Condomino_Model();
 
-        $obj_condomino->condomino_id   = ! empty($_POST['condomino_id'])   ? $this->input->post('condomino_id')   : NULL;
-        $obj_condomino->condomino_cpf  = ! empty($_POST['condomino_cpf'])  ? $this->input->post('condomino_cpf')  : NULL;
-        $obj_condomino->condomino_nome = ! empty($_POST['condomino_nome']) ? $this->input->post('condomino_nome') : NULL;
-        $obj_condomino->condomino_lote = ! empty($_POST['condomino_lote']) ? $this->input->post('condomino_lote') : NULL;
+        $obj_condomino->condomino_id   = ! empty($_POST['condomino_id'])   ? $this->input->post('condomino_id')              : NULL;
+        $obj_condomino->condomino_cpf  = ! empty($_POST['condomino_cpf'])  ? limpar_cpf($this->input->post('condomino_cpf')) : NULL;
+        $obj_condomino->condomino_nome = ! empty($_POST['condomino_nome']) ? $this->input->post('condomino_nome')            : NULL;
+        $obj_condomino->condomino_lote = ! empty($_POST['condomino_lote']) ? $this->input->post('condomino_lote')            : NULL;
 
         if ($obj_condomino->condomino_id > 0) 
         {
@@ -82,8 +82,8 @@ class Condomino extends MY_Controller {
                 $this->load->model('Usuario_Model');
                 $obj_usuario = new Usuario_Model();
 
-                $obj_usuario->usuario_login = $this->input->post('condomino_cpf');
-                $obj_usuario->usuario_senha = password_hash($this->input->post('condomino_cpf'), PASSWORD_DEFAULT);
+                $obj_usuario->usuario_login = limpar_cpf($this->input->post('condomino_cpf'));
+                $obj_usuario->usuario_senha = password_hash(limpar_cpf($this->input->post('condomino_cpf')), PASSWORD_DEFAULT);
                 $obj_usuario->inserir();
 
                 $resposta['status']   = '1';
@@ -112,7 +112,6 @@ class Condomino extends MY_Controller {
         $obj_condomino->condomino_id = $this->input->post('condomino_id');
 
         echo json_encode($obj_condomino->recuperar());
-
     }
 
     /**

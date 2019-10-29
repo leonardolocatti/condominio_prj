@@ -89,7 +89,7 @@ function carregar_dados_funcionario (funcionario_id) {
         },
     })
     .done(function (resposta) {
-        $('#funcionario_cpf').val(resposta.funcionario_cpf);
+        $('#funcionario_cpf').val(resposta.funcionario_cpf).trigger('keyup');
         $('#funcionario_nome').val(resposta.funcionario_nome);
         $('#funcionario_cargo').val(resposta.funcionario_cargo);
     })

@@ -89,7 +89,7 @@ function carregar_dados_condomino (condomino_id) {
         },
     })
     .done(function (resposta) {
-        $('#condomino_cpf').val(resposta.condomino_cpf);
+        $('#condomino_cpf').val(resposta.condomino_cpf).trigger('keyup');
         $('#condomino_nome').val(resposta.condomino_nome);
         $('#condomino_lote').val(resposta.condomino_lote);
     })
