@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- View de administração de Condôminos -->
 <button type="button" class="btn btn-sm btn-outline-success mb-3" id="condomino_botao_cadastrar"
         onclick="abrir_modal_condomino()">
+    <i class="fas fa-plus mr-1"></i>
     Cadastrar
 </button>
 <table id="condomino_tabela" class="table table-striped table-bordered table-sm w-100"></table>

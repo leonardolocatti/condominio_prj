@@ -15,6 +15,7 @@ function carregar_area_comum_tabela () {
             'serverSide': true,
             'searching': false,
             'destroy': true,
+            'autoWidth': false,
             'language': {
                 'url': base_url + '/application/assets/datatables/portugues.json',
             },
@@ -27,12 +28,12 @@ function carregar_area_comum_tabela () {
                 },
             },
             'columns': [
-                { 'title': 'ID', 'className': 'align-middle', 'name': 'area_comum.area_comum_id', 'data': 'area_comum_id' },
+                { 'title': 'ID', 'className': 'align-middle', 'name': 'area_comum.area_comum_id', 'data': 'area_comum_id', 'width': '30px' },
                 { 'title': 'Nome', 'className': 'align-middle', 'name': 'area_comum.area_comum_nome', 'data': 'area_comum_nome' },
-                { 'title': 'Lotação', 'className': 'align-middle', 'name': 'area_comum.area_comum_lotacao_maxima', 'data': 'area_comum_lotacao_maxima' },
-                { 'title': 'Hora de Abertura', 'className': 'align-middle', 'name': 'area_comum.area_comum_hora_abertura', 'data': 'area_comum_hora_abertura' },
-                { 'title': 'Hora de Fechamento', 'className': 'align-middle', 'name': 'area_comum.area_comum_hora_fechamento', 'data': 'area_comum_hora_fechamento' },
-                { 'title': 'Opções', 'className': 'align-middle', 'data': 'opcoes', 'sortable': false, 'width': '80px' },
+                { 'title': 'Lotação', 'className': 'align-middle', 'name': 'area_comum.area_comum_lotacao_maxima', 'data': 'area_comum_lotacao_maxima', 'width': '80px' },
+                { 'title': 'Abre', 'className': 'align-middle', 'name': 'area_comum.area_comum_hora_abertura', 'data': 'area_comum_hora_abertura', 'width': '70px' },
+                { 'title': 'Fecha', 'className': 'align-middle', 'name': 'area_comum.area_comum_hora_fechamento', 'data': 'area_comum_hora_fechamento', 'width': '70px' },
+                { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '60px'},
             ],
         });
     }

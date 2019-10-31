@@ -15,6 +15,7 @@ function carregar_lote_tabela () {
             'serverSide': true,
             'searching': false,
             'destroy': true,
+            'autoWidth': false,
             'language': {
                 'url': base_url + '/application/assets/datatables/portugues.json',
             },
@@ -27,11 +28,12 @@ function carregar_lote_tabela () {
                 },
             },
             'columns': [
-                { 'title': 'ID', 'className': 'align-middle', 'name': 'lote.lote_id', 'data': 'lote_id' },
-                { 'title': 'Número', 'className': 'align-middle', 'name': 'lote.lote_numero', 'data': 'lote_numero' },
-                { 'title': 'Área', 'className': 'align-middle', 'name': 'lote.lote_area', 'data': 'lote_area' },
+                { 'title': 'ID', 'className': 'align-middle', 'name': 'lote.lote_id', 'data': 'lote_id', 'width': '30px' },
+                { 'title': 'Nº', 'className': 'align-middle', 'name': 'lote.lote_numero', 'data': 'lote_numero', 'width': '30px' },
+                { 'title': 'Área', 'className': 'align-middle', 'name': 'lote.lote_area', 'data': 'lote_area', 'width': '80px' },
                 { 'title': 'Descrição', 'className': 'align-middle', 'name': 'lote.lote_descricao', 'data': 'lote_descricao' },
-                { 'title': 'Opções', 'className': 'align-middle', 'data': 'opcoes', 'sortable': false, 'width': '80px' },
+                { 'title': 'Morador', 'className': 'align-middle', 'name': 'condomino.condomino_nome', 'data': 'morador', 'width': '200px' },
+                { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '60px' },
             ],
         });
     }
@@ -89,7 +91,7 @@ function carregar_dados_lote (lote_id) {
     })
     .done(function (resposta) {
         $('#lote_numero').val(resposta.lote_numero);
-        $('#lote_area').val(resposta.lote_area);
+        $('#lote_area').val(resposta.lote_area).trigger('keyup');
         $('#lote_descricao').val(resposta.lote_descricao);
     })
     .fail(function (erro) {

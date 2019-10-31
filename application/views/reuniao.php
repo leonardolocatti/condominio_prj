@@ -17,6 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <?php if ($this->session->usuario->usuario_tipo == 'administrador') { ?> 
                                     <button type="button" class="btn btn-sm btn-outline-success mb-3" id="reuniao_botao_cadastrar"
                                             onclick="abrir_modal_reuniao()">
+                                        <i class="fas fa-plus mr-1"></i>
                                         Cadastrar
                                     </button>
                                 <?php } ?>

@@ -30,7 +30,7 @@ class Administracao extends MY_Controller {
         $this->load->adicionar_js('condomino.js');
 
         // View de administração de areas comuns
-        $view_areas_comuns = $this->load->view('area_comum', array(), TRUE);
+        $view_areas_comuns = $this->load->view('area_comum_adm', array(), TRUE);
         $this->load->adicionar_js('area_comum.js');
 
         // Carrega os cargos dos funcionários que serão colocados no dropdown dos Funcionários

@@ -20,6 +20,8 @@ class Lote extends MY_Controller {
 
         foreach ($res_lote['obj'] as $lote)
         {
+            $morador = ! empty($lote->condomino_nome) ? $lote->condomino_nome : 'Lote desocupado';
+
             $opcoes  = '<button class="btn btn-sm btn-warning" title="Editar lote" onclick="abrir_modal_lote('.$lote->lote_id.')">';
             $opcoes .=     '<i class="fas fa-pen"></i>';
             $opcoes .= '</button> ';
@@ -30,8 +32,9 @@ class Lote extends MY_Controller {
 
             $lotes[$i]['lote_id']        = $lote->lote_id;
             $lotes[$i]['lote_numero']    = $lote->lote_numero;
-            $lotes[$i]['lote_area']      = $lote->lote_area;
+            $lotes[$i]['lote_area']      = formatar_area($lote->lote_area);
             $lotes[$i]['lote_descricao'] = $lote->lote_descricao;
+            $lotes[$i]['morador']        = $morador;
             $lotes[$i]['opcoes']         = $opcoes;
 
             $i++;
@@ -56,10 +59,10 @@ class Lote extends MY_Controller {
         $this->load->model('Lote_Model');
         $obj_lote = new Lote_Model();
 
-        $obj_lote->lote_id        = ! empty($_POST['lote_id']) ? $this->input->post('lote_id') : NULL;
-        $obj_lote->lote_numero    = ! empty($_POST['lote_numero']) ? $this->input->post('lote_numero') : NULL;
-        $obj_lote->lote_area      = ! empty($_POST['lote_area']) ? $this->input->post('lote_area') : NULL;
-        $obj_lote->lote_descricao = ! empty($_POST['lote_descricao']) ? $this->input->post('lote_descricao') : NULL;
+        $obj_lote->lote_id        = ! empty($_POST['lote_id'])        ? $this->input->post('lote_id')                : NULL;
+        $obj_lote->lote_numero    = ! empty($_POST['lote_numero'])    ? $this->input->post('lote_numero')            : NULL;
+        $obj_lote->lote_area      = ! empty($_POST['lote_area'])      ? limpar_area($this->input->post('lote_area')) : NULL;
+        $obj_lote->lote_descricao = ! empty($_POST['lote_descricao']) ? $this->input->post('lote_descricao')         : NULL;
 
         if ($obj_lote->lote_id > 0) 
         {

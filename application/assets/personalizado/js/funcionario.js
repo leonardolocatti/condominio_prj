@@ -30,9 +30,9 @@ function carregar_funcionario_tabela () {
             'columns': [
                 { 'title': 'ID', 'className': 'align-middle', 'name': 'funcionario.funcionario_id', 'data': 'funcionario_id', 'width': '30px' },
                 { 'title': 'Nome', 'className': 'align-middle', 'name': 'funcionario.funcionario_nome', 'data': 'funcionario_nome' },
-                { 'title': 'CPF', 'className': 'align-middle', 'name': 'funcionario.funcionario_cpf', 'data': 'funcionario_cpf' },
-                { 'title': 'Cargo', 'className': 'align-middle', 'name': 'funcionario.funcionario_cargo', 'data': 'funcionario_cargo' },
-                { 'title': 'Opções', 'className': 'align-middle', 'data': 'opcoes', 'sortable': false, 'width': '60px' },
+                { 'title': 'CPF', 'className': 'align-middle', 'name': 'funcionario.funcionario_cpf', 'data': 'funcionario_cpf', 'width': '100px' },
+                { 'title': 'Cargo', 'className': 'align-middle', 'name': 'funcionario.funcionario_cargo', 'data': 'funcionario_cargo', 'width': '100px' },
+                { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '60px' },
             ]
         });
     }

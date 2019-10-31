@@ -18,22 +18,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="col-2">
                                 <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link active" data-toggle="pill" href="#lotes" role="tab" 
-                                            aria-controls="lotes" aria-selected="true">
+                                            aria-controls="lotes" aria-selected="true" onclick="carregar_lote_tabela()">
                                         <i class="fas fa-square mr-1"></i>
                                         Lotes
                                     </a>
                                     <a class="nav-link" data-toggle="pill" href="#condominos" role="tab" 
-                                            aria-controls="condominos" aria-selected="false">
+                                            aria-controls="condominos" aria-selected="false" onclick="carregar_condomino_tabela()">
                                         <i class="fas fa-user mr-1"></i>
                                         Condôminos
                                     </a>
                                     <a class="nav-link" data-toggle="pill" href="#areas_comuns" role="tab"
-                                            aria-controls="areas_comuns" aria-selected="false">
+                                            aria-controls="areas_comuns" aria-selected="false" onclick="carregar_area_comum_tabela()">
                                         <i class="fas fa-dumbbell mr-1"></i>
                                         Áreas Comuns
                                     </a>
                                     <a class="nav-link" data-toggle="pill" href="#funcionarios" role="tab"
-                                            aria-controls="funcionarios" aria-selected="false">
+                                            aria-controls="funcionarios" aria-selected="false" onclick="carregar_funcionario_tabela()">
                                         <i class="fas fa-user-tie mr-1"></i>
                                         Funcionários
                                     </a>

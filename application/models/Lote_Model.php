@@ -35,7 +35,9 @@ class Lote_Model extends MY_Model {
         $this->db->select('lote.lote_numero');
         $this->db->select('lote.lote_area');
         $this->db->select('lote.lote_descricao');
+        $this->db->select('condomino.condomino_nome');
         $this->db->from('lote');
+        $this->db->join('condomino', 'condomino.condomino_lote = lote.lote_id AND condomino.condomino_excluido = 0', 'left');
         $this->db->where('lote.lote_excluido', 0);
 
         $this->db->limit($dados['length'], $dados['start']);
@@ -59,6 +61,8 @@ class Lote_Model extends MY_Model {
         $this->db->select('lote.lote_numero');
         $this->db->select('lote.lote_descricao');
         $this->db->from('lote');
+        $this->db->join('condomino', 'condomino.condomino_lote = lote.lote_id AND condomino.condomino_excluido = 0', 'left');
+        $this->db->where('condomino.condomino_id', NULL);
         $this->db->where('lote.lote_excluido', 0);
 
         $this->db->order_by('lote.lote_numero', 'ASC');

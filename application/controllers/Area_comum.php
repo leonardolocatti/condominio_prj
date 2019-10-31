@@ -4,6 +4,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Area_comum extends MY_Controller {
 
     /**
+     * Exibe a página de áreas comuns
+     */
+    public function index()
+    {
+        $this->load->setar_titulo('Áreas Comuns');
+        $this->load->setar_id_body('pagina_area_comum');
+        $this->load->adicionar_js('area_comum.js');
+        $this->load->exibir('area_comum');
+    }
+
+    /**
      * Retorna um json com os dados das áreas comuns para serem inseridas na tabela.
      * 
      * @return void

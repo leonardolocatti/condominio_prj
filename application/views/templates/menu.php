@@ -30,6 +30,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </a>
             </li>
 
+            <li class="nav-item" id="item_area_comum">
+                <a class="nav-link" href="<?php echo site_url('area_comum') ?>">
+                    <i class="fas fa-dumbbell mr-1"></i>
+                    Área Comum
+                </a>
+            </li>
+
             <li class="nav-item" id="item_reuniao">
                 <a class="nav-link" href="<?php echo site_url('reuniao') ?>">
                     <i class="fas fa-clipboard-list mr-1"></i>

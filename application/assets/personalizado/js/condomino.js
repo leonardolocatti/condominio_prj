@@ -29,10 +29,10 @@ function carregar_condomino_tabela () {
             },
             'columns': [
                 { 'title': 'ID', 'className': 'align-middle', 'name': 'condomino.condomino_id', 'data': 'condomino_id', 'width': '30px' },
-                { 'title': 'Nome', 'className': 'align-middle', 'name': 'condomino.condomino_nome', 'data': 'condomino_nome' },
-                { 'title': 'CPF', 'className': 'align-middle', 'name': 'condomino.condomino_cpf', 'data': 'condomino_cpf' },
+                { 'title': 'Nome', 'className': 'align-middle', 'name': 'condomino.condomino_nome', 'data': 'condomino_nome', 'width': '200px' },
+                { 'title': 'CPF', 'className': 'align-middle', 'name': 'condomino.condomino_cpf', 'data': 'condomino_cpf', 'width': '100px' },
                 { 'title': 'Lote', 'className': 'align-middle', 'name': 'lote.lote_numero', 'data': 'condomino_lote' },
-                { 'title': 'Opções', 'className': 'align-middle', 'data': 'opcoes', 'sortable': false, 'width': '60px'},
+                { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '60px'},
             ]
         });
     }
@@ -70,7 +70,7 @@ function limpar_modal_condomino () {
 
     limpar_validacao($('#condomino_cpf'));
     limpar_validacao($('#condomino_nome'));
-    limpar_validacao($('#conomino_lote'));
+    limpar_validacao($('#condomino_lote'));
 }
 
 /**

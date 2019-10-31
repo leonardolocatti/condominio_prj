@@ -7,7 +7,8 @@ body {
 /* Estilos do menu */
 #pagina_administracao #item_administracao,
 #pagina_home #item_home,
-#pagina_reuniao #item_reuniao {
+#pagina_reuniao #item_reuniao,
+#pagina_area_comum #item_area_comum {
     border-bottom: 3px solid #4976e6;
     font-weight: bold;
     padding: 0.2em;
@@ -15,7 +16,8 @@ body {
 
 #pagina_administracao #item_administracao a,
 #pagina_home #item_home a,
-#pagina_reuniao #item_reuniao a {
+#pagina_reuniao #item_reuniao a,
+#pagina_area_comum #item_area_comum a {
     color: #ffffff !important;
 }
 
@@ -36,7 +38,7 @@ body {
 }
 
 .modal_informacao .modal-header {
-
+    
 }
 
 /* Estilos das caixas de conteúdo */
