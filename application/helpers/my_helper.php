@@ -91,3 +91,68 @@ if ( ! function_exists('formatar_area'))
         return $area.' m²';
     }
 }
+
+if ( ! function_exists('validar_cpf'))
+{
+    /**
+     * Valida um número de CPF.
+     * 
+     * @param  string $cpf Número de CPF com pontos e traços
+     * @return bool   Retorna verdadeiro se o número for válido e falso caso contrário
+     */
+    function validar_cpf($cpf)
+    {
+        $cpf = limpar_cpf($cpf);
+
+        $array_cpf = str_split($cpf, 1);
+
+        // CPF deve ter 11 dígitos
+        if (count($array_cpf) == 11)
+        {
+            // Calculando o primeiro dígito verificador
+            $soma          = 0;
+            $multiplicador = 10;
+            foreach ($array_cpf as $digito)
+            {
+                if ($multiplicador < 2)
+                {
+                    break;
+                }
+
+                $soma += $multiplicador-- * $digito;
+            }
+
+            $digito_verificador_1 = ($soma * 10) % 11;
+
+            // Calculando o segundo dígito verificador
+            $soma          = 0;
+            $multiplicador = 11;
+            foreach ($array_cpf as $digito)
+            {
+                if ($multiplicador < 2)
+                {
+                    break;
+                }
+
+                $soma += $multiplicador-- * $digito;
+            }
+
+            $digito_verificador_2 = ($soma * 10) % 11;
+
+            if ($digito_verificador_1 == $array_cpf[9] && $digito_verificador_2 == $array_cpf[10])
+            {
+                $resposta['valido'] = TRUE;
+            }
+            else
+            {
+                $resposta['valido'] = FALSE;
+            }
+        }
+        else
+        {
+            $resposta['valido'] = FALSE;
+        }
+
+        echo json_encode($resposta);
+    }
+}

@@ -89,6 +89,7 @@ class Funcionario extends MY_Controller {
 
                     $obj_usuario->usuario_login = limpar_cpf($this->input->post('funcionario_cpf'));
                     $obj_usuario->usuario_senha = password_hash(limpar_cpf($this->input->post('funcionario_cpf')), PASSWORD_DEFAULT);
+                    $obj_usuario->usuario_tipo  = 'porteiro';
                     $obj_usuario->inserir();
                 }
 

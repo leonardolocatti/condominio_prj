@@ -139,4 +139,12 @@ class Condomino extends MY_Controller {
 
         echo json_encode($resposta);
     }
+
+    /**
+     * Valida o CPF inserido.
+     */
+    public function validar_cpf()
+    {
+        return validar_cpf($this->input->post('cpf'));
+    }
 }

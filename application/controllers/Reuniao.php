@@ -145,30 +145,3 @@ class Reuniao extends MY_Controller {
         echo json_encode($obj_reuniao->recuperar());
     }
 }
-
-//     /**
-//      * Recebe os dados de um condômino que será excluído.
-//      * 
-//      * @return void
-//      */
-//     public function excluir_condomino()
-//     {
-//         $this->load->model('Condomino_Model');
-//         $obj_condomino = new Condomino_Model();
-
-//         $obj_condomino->condomino_id = $this->input->post('condomino_id');
-
-//         if ($obj_condomino->excluir())
-//         {
-//             $resposta['status']   = '1';
-//             $resposta['mensagem'] = 'Condômino excluído com sucesso.';
-//         }
-//         else
-//         {
-//             $reposta['status']    = '0';
-//             $resposta['mensagem'] = 'Condômino não pôde ser excluído.';
-//         }
-
-//         echo json_encode($resposta);
-//     }
-// }

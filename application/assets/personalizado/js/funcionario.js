@@ -142,7 +142,7 @@ function salvar_funcionario () {
 function validar_campos_funcionario () {
     var valido = true;
 
-    if ( ! validar_campo($('#funcionario_cpf'), false)) {
+    if ( ! validar_cpf($('#funcionario_cpf'))) {
         valido = false;
     }
 
@@ -198,5 +198,10 @@ $(document).ready(function () {
     // Limpa os dados do modal ao fechar
     $('#modal_cadastro_funcionario').on('hidden.bs.modal', function () {
         limpar_modal_funcionario();
+    });
+
+    // Valida o CPF
+    $('#funcionario_cpf').on('change', function () {
+        validar_cpf(this);
     });
 });

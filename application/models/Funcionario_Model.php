@@ -47,4 +47,21 @@ class Funcionario_Model extends MY_Model {
 
         return $resposta;
     }
+
+    /**
+     * Busca os funcionários e retorna os dados do funcionário.
+     * 
+     * @param  string $funcionario_cpf CPF do funcionário
+     * @return object Retorna um objeto do funcionário correspondente.
+     */
+    public function buscar_funcionario($funcionario_cpf)
+    {
+        $this->db->select('funcionario.funcionario_cpf');
+        $this->db->select('funcionario.funcionario_nome');
+        $this->db->from('funcionario');
+        $this->db->where('funcionario.funcionario_excluido', '0');
+        $this->db->where('funcionario.funcionario_cpf', $funcionario_cpf);
+
+        return $this->db->get()->row();
+    }
 }

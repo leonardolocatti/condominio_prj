@@ -48,4 +48,32 @@ class Condomino_Model extends MY_Model {
 
         return $resposta;
     }
+
+    /**
+     * Retorna os condôminos que serão inseridos no dropdown.
+     * 
+     * @return array Array com os condôminos para inserir no dropdown.
+     */
+    public function condominos_dropdown()
+    {
+        $this->db->select('condomino.condomino_id');
+        $this->db->select('condomino.condomino_nome');
+        $this->db->select('lote.lote_numero');
+        $this->db->from('condomino');
+        $this->db->join('lote', 'lote.lote_id = condomino.condomino_lote');
+        $this->db->where('condomino.condomino_excluido', 0);
+
+        $this->db->order_by('condomino.condomino_nome', 'ASC');
+
+        $condominos = array(
+            '' => 'Selecione um condomino',
+        );
+
+        foreach ($this->db->get()->result() as $condomino)
+        {
+            $condominos[$condomino->condomino_id] = $condomino->condomino_nome.' - '.$condomino->lote_numero;
+        }
+
+        return $condominos;
+    }
 }

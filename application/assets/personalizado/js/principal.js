@@ -159,7 +159,6 @@ function sair() {
                 }
             })
             .done(function (resposta) {
-                console.log(resposta);
                 switch (resposta.status) {
                     case '1':
                         window.location.href = site_url + '/login';
@@ -177,4 +176,36 @@ function sair() {
             });
         }
     );
+}
+
+/**
+ * Função para verificar o CPF inserido.
+ * 
+ * @param  {JQuery}  campo Campo no qual o CPF será inserido
+ * @return {boolean} Retorna verdadeiro caso seja válido e falso, caso contrário.
+ */
+function validar_cpf (campo) {
+    var ajax = $.ajax({
+        url: site_url + '/condomino/validar_cpf',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            cpf: $(campo).val(),
+        },
+        async: false,
+    })
+    .done(function (resposta) {
+        if (resposta.valido == true) {
+            $(campo).addClass('is-valid');
+            $(campo).removeClass('is-invalid');
+        } else if (resposta.valido == false) {
+            $(campo).addClass('is-invalid');
+            $(campo).removeClass('is-valid');
+        }
+    })
+    .fail(function (erro) {
+        exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText + '.');
+    });
+
+    return ajax.responseJSON.valido;
 }

@@ -142,10 +142,10 @@ function salvar_condomino () {
 function validar_campos_condomino () {
     var valido = true;
 
-    if ( ! validar_campo($('#condomino_cpf'), false)) {
+    if ( ! validar_cpf($('#condomino_cpf'))) {
         valido = false;
     }
-
+    
     if ( ! validar_campo($('#condomino_nome'), false)) {
         valido = false;
     }
@@ -198,5 +198,10 @@ $(document).ready(function () {
     // Limpa os dados do modal ao fechar.
     $('#modal_cadastro_condomino').on('hidden.bs.modal', function () {
         limpar_modal_condomino();
+    });
+
+    // Valida o CPF
+    $('#condomino_cpf').on('change', function () {
+        validar_cpf(this);
     });
 });
