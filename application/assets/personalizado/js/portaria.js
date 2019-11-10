@@ -6,13 +6,13 @@
  * @return {void}
  */
 function buscar_dados_visitantes () {
-    if (validar_cpf($('#visitante_cpf'))) {
+    if (validar_cpf($('.caixa_conteudo #visitante_cpf'))) {
         $.ajax({
             url: site_url + '/visitante/buscar_visitante',
             type: 'post',
             dataType: 'json',
             data: {
-                visitante_cpf: $('#visitante_cpf').val(),
+                visitante_cpf: $('.caixa_conteudo #visitante_cpf').val(),
             }
         })
         .done(function (resposta) {
@@ -25,13 +25,15 @@ function buscar_dados_visitantes () {
             } else if (resposta.status == '1') {
                 $('#visitante_condomino').removeAttr('disabled');
                 $('#visitante_botao_editar').removeAttr('disabled');
+                $('#carro_botao_editar').removeAttr('disabled');
                 switch (resposta.tipo) {
                     case 'funcionario':
-                        $('#visitante_nome').val(resposta.funcionario.funcionario_nome);
+                        $('.caixa_conteudo #visitante_nome').val(resposta.funcionario.funcionario_nome);
+                        $('#visitante_id').val('0');
                         break;
                     case 'visitante':
                         $('#visitante_id').val(resposta.visitante.visitante_id);
-                        $('#visitante_nome').val(resposta.visitante.visitante_nome);
+                        $('.caixa_conteudo #visitante_nome').val(resposta.visitante.visitante_nome);
                         break;
                 }
             }
@@ -49,7 +51,7 @@ function buscar_dados_visitantes () {
  * @return {void}
  */
 function abrir_modal_cadastro_visitante (visitante_id) {
-    $('#modal_cadastro_visitante #visitante_id').val(visitante_id);
+    $('#visitante_id').val(visitante_id);
 
     if (visitante_id > 0) {
         $('#modal_cadastro_visitante_titulo').html('Editar Visitante');
@@ -140,7 +142,7 @@ function buscar_dados_visitantes_edicao (visitante_id) {
         }
     })
     .done(function (resposta) {
-        $('#modal_cadastro_visitante #visitante_cpf').val(resposta.visitante_cpf);
+        $('#modal_cadastro_visitante #visitante_cpf').val(resposta.visitante_cpf).trigger('keyup');
         $('#modal_cadastro_visitante #visitante_nome').val(resposta.visitante_nome);
     })
     .fail(function (erro) {
@@ -155,6 +157,10 @@ $(document).ready(function () {
 
     $('#visitante_botao_editar').on('click', function () {
         abrir_modal_cadastro_visitante($('#visitante_id').val());
+    });
+
+    $('#carro_botao_editar').on('click', function () {
+        abrir_modal_exibicao_carro($('#visitante_id').val());
     });
 
     // Limpa os dados do modal ao fechar

@@ -14,9 +14,14 @@ class Portaria extends MY_Controller {
 
         $condominos = $obj_condomino->condominos_dropdown();
 
+        // View dos carros
+        $view_carros = $this->load->view('carro', array(), TRUE);
+        $this->load->adicionar_js('carro.js');
+
         // Array com as variáveis passadas para a view
         $variaveis = array(
             'condominos_dropdown' => $condominos,
+            'view_carros'         => $view_carros,
         );
 
         $this->load->setar_titulo('Portaria');

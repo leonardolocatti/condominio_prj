@@ -52,13 +52,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 col-sm-6 m-auto">
+                                <div class="col-lg-4 col-md-4 col-sm-4 m-auto">
                                     <button type="button" class="btn btn-outline-warning btn-block mt-3" id="visitante_botao_editar" disabled>
                                         <i class="fas fa-pen mr-2"></i>
                                         Editar Visitante
                                     </button>
                                 </div>
-                                <div class="col-md-4 col-sm-6 m-auto">
+                                <div class="col-lg-4 col-md-4 col-sm-4 m-auto">
+                                    <button type="button" class="btn btn-outline-info btn-block mt-3" id="carro_botao_editar" disabled>
+                                        <i class="fas fa-car mr-2"></i>
+                                        Editar Carros
+                                    </button>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 m-auto">
                                     <button type="submit" class="btn btn-outline-success btn-block mt-3" id="visitante_botao_registrar">
                                         <i class="fas fa-sign-in-alt mr-2"></i>
                                         Registrar Entrada
@@ -99,12 +105,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="modal-body">
                 <form id="form_visitante" action="javascript:salvar_visitante()" novalidate>
-                    <input type="hidden" id="visitante_id" name="visitante_id">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="visitante_cpf">CPF</label>
-                                <input type="text" class="form-control" id="visitante_cpf" name="visitante_cpf" readonly>
+                                <input type="text" class="form-control" id="visitante_cpf" name="visitante_cpf" data-mask="000.000.000-00" readonly>
                             </div>
                         </div>
                         <div class="col-6">
@@ -128,3 +133,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div> <!-- Fim do modal de cadastro/edição de áreas comuns -->
+
+<?php echo $view_carros ?>
+
+<!-- Modal de cadastro/edição de carros -->
+<!-- <div class="modal fade modal_cadastro" id="modal_cadastro_carro" tabindex="-1" role="dialog" aria-hidde="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_cadastro_carro_titulo"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-outline-danger"
+                        data-dismiss="modal">
+                    Fechar
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-success" id="visitante_botao_salvar" onclick="salvar_visitante()">
+                    Salvar
+                </button>
+            </div>
+        </div>
+    </div> -->
+<!-- </div> Fim do modal de cadastro/edição de áreas comuns -->
