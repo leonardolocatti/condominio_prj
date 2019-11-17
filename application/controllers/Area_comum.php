@@ -31,7 +31,11 @@ class Area_comum extends MY_Controller {
 
         foreach ($res_area_comum['obj'] as $area_comum)
         {
-            $opcoes  = '<button class="btn btn-sm btn-warning" title="Editar área comum" onclick="abrir_modal_area_comum('.$area_comum->area_comum_id.')">';
+            $opcoes  = '<button class="btn btn-sm btn-info" title="Reservar área comum" onclick="abrir_modal_area_comum_reserva('.$area_comum->area_comum_id.')">';
+            $opcoes .=     '<i class="fas fa-calendar"></i>';
+            $opcoes .= '</button> ';
+
+            $opcoes .= '<button class="btn btn-sm btn-warning" title="Editar área comum" onclick="abrir_modal_area_comum('.$area_comum->area_comum_id.')">';
             $opcoes .=     '<i class="fas fa-pen"></i>';
             $opcoes .= '</button> ';
 

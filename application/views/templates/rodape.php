@@ -21,9 +21,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- Bootstrap JS -->
     <script src="<?php echo base_url('application/assets/bootstrap/js/bootstrap.bundle.js') ?>"></script>
+    
+    <!-- Full Calendar -->
+    <script src="<?php echo base_url('application/assets/fullcalendar/packages/core/main.js') ?>"></script>
+    <script src="<?php echo base_url('application/assets/fullcalendar/packages/daygrid/main.js') ?>"></script>
 
     <!-- Arquivo principal de JS -->
     <script src="<?php echo base_url('application/assets/personalizado/js/principal.js') ?>"></script>
+
 
     <!-- Arquivos JS personalizados -->
     <?php foreach ($js_array as $js) { ?>

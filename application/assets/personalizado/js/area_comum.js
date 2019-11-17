@@ -33,7 +33,7 @@ function carregar_area_comum_tabela () {
                 { 'title': 'Lotação', 'className': 'align-middle', 'name': 'area_comum.area_comum_lotacao_maxima', 'data': 'area_comum_lotacao_maxima', 'width': '80px' },
                 { 'title': 'Abre', 'className': 'align-middle', 'name': 'area_comum.area_comum_hora_abertura', 'data': 'area_comum_hora_abertura', 'width': '70px' },
                 { 'title': 'Fecha', 'className': 'align-middle', 'name': 'area_comum.area_comum_hora_fechamento', 'data': 'area_comum_hora_fechamento', 'width': '70px' },
-                { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '60px'},
+                { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '90px'},
             ],
         });
     }
@@ -201,8 +201,116 @@ function excluir_area_comum (area_comum_id) {
     );
 }
 
+/**
+ * Abre o modal de reserva
+ * 
+ * @param  {int} area_comum_id ID da área comum
+ */
+function abrir_modal_area_comum_reserva (area_comum_id) {
+    $('#reserva_id').val(reserva_id);
+    $('#area_comum_id_reserva').val(area_comum_id);
+
+    if (reserva_id > 0) {
+        $('#modal_reserva_area_comum_titulo').html('Editar Reserva');
+        carregar_dados_reserva(reserva_id);
+    } else {
+        $('#modal_reserva_area_comum_titulo').html('Cadastrar Reserva');
+    }
+
+    $('#modal_reserva_area_comum').modal('show');
+}
+
+/**
+ * Salva a reserva
+ */
+function salvar_reserva () {
+    if (validar_campos_reserva()) {
+        $.ajax({
+            url: site_url + '/reserva/salvar_reserva',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                reserva_id: $('#reserva_id').val(),
+                area_comum_id: $('#area_comum_id_reserva').val(),
+                reserva_data_inicio: $('#reserva_data_inicio').val(),
+                reserva_data_fim: $('#reserva_data_fim').val(),
+            },
+        })
+        .done(function (resposta) {
+            if (resposta.status == '1') {
+                exibir_modal('ok', 'sucesso', 'Reserva salva', resposta.mensagem,
+                    function () {
+                        $('#modal_reserva_area_comum').modal('hide');
+                        carregar_calendario();
+                    }
+                );
+            } else {
+                exibir_modal('ok', 'alerta', 'Erro ao salvar', resposta.mensagem);
+            }
+        })
+        .fail(function (erro) {
+            exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText + '.');
+        });
+    }
+}
+
+/**
+ * Valida os campos da área comum.
+ * 
+ * @return {boolean} Retorna verdadeiro caso os dados sejam validados e falso caso contrário.
+ */
+function validar_campos_reserva () {
+    var valido = true;
+
+    if ( ! validar_campo($('#reserva_data_inicio'), false)) {
+        valido = false;
+    }
+
+    if ( ! validar_campo($('#reserva_data_fim'), false)) {
+        valido = false;
+    }
+
+    return valido;
+}
+
+// Calendário
+var calendario;
+
+/**
+ * Carrega o calendário.
+ */
+function carregar_calendario () {
+    var reservas = [];
+
+    $.ajax({
+        url: site_url + '/reserva/carregar_reservas',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            
+        },
+    })
+    .done(function (resposta) {
+        reservas = resposta;
+
+
+    $('#fullcalendar').empty();
+    calendario = new FullCalendar.Calendar(document.getElementById('fullcalendar'), {
+        plugins: ['dayGrid'],
+        events: reservas,
+    });
+
+    calendario.render();
+    })
+    .fail(function (erro) {
+        exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText);
+    });
+}
+
 $(document).ready(function () {
     carregar_area_comum_tabela();
+
+    carregar_calendario();
 
     // Limpa os dados do modal ao fechar
     $('#modal_cadastro_area_comum').on('hidden.bs.modal', function () {

@@ -18,6 +18,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="<?php echo base_url('/application/assets/fontawesome/css/all.css') ?>">
 
+    <!-- Full Calendar -->
+    <link rel="stylesheet" href="<?php echo base_url('/application/assets/fullcalendar/packages/core/main.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('/application/assets/fullcalendar/packages/daygrid/main.css') ?>">
+
     <!-- Arquivo Principal de CSS -->
     <link rel="stylesheet" href="<?php echo base_url('/application/assets/personalizado/css/principal.css') ?>">
 
