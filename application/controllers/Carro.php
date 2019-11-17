@@ -20,7 +20,7 @@ class Carro extends MY_Controller {
 
         foreach ($res_carro['obj'] as $carro)
         {
-            $opcoes  = '<button class="btn btn-sm btn-warning" title="Editar carro" onclick="abrir_modal_carro('.$carro->carro_id.')">';
+            $opcoes  = '<button class="btn btn-sm btn-warning" title="Editar carro" onclick="abrir_modal_carro_edicao('.$carro->carro_id.')">';
             $opcoes .=     '<i class="fas fa-pen"></i>';
             $opcoes .= '</button> ';
 
@@ -93,48 +93,45 @@ class Carro extends MY_Controller {
 
         echo json_encode($resposta);
     }
-}
 
+    /**
+     * Retorna um json com os dados do carro pedido por POST.
+     * 
+     * @return void
+     */
+    public function dados_carro()
+    {
+        $this->load->model('Carro_Model');
+        $obj_carro = new Carro_Model();
 
-
-//     /**
-//      * Retorna um json com os dados do lote pedido por POST.
-//      * 
-//      * @return void
-//      */
-//     public function dados_lote()
-//     {
-//         $this->load->model('Lote_Model');
-//         $obj_lote = new Lote_Model();
-
-//         $obj_lote->lote_id = $this->input->post('lote_id');
+        $obj_carro->carro_id = $this->input->post('carro_id');
         
-//         echo json_encode($obj_lote->recuperar());
-//     }
+        echo json_encode($obj_carro->recuperar());
+    }
 
-//     /**
-//      * Recebe os dados de um lote que será excluído.
-//      * 
-//      * @return void
-//      */
-//     public function excluir_lote()
-//     {
-//         $this->load->model('Lote_Model');
-//         $obj_lote = new Lote_Model();
+    /**
+     * Recebe os dados de um carro que será excluído.
+     * 
+     * @return void
+     */
+    public function excluir_carro()
+    {
+        $this->load->model('Carro_Model');
+        $obj_carro = new Carro_Model();
 
-//         $obj_lote->lote_id = $this->input->post('lote_id');
+        $obj_carro->carro_id = $this->input->post('carro_id');
 
-//         if ($obj_lote->excluir())
-//         {
-//             $resposta['status']   = '1';
-//             $resposta['mensagem'] = 'Lote excluído com sucesso.';
-//         }
-//         else
-//         {
-//             $reposta['status']    = '0';
-//             $resposta['mensagem'] = 'Lote não pôde ser excluído.';
-//         }
+        if ($obj_carro->excluir())
+        {
+            $resposta['status']   = '1';
+            $resposta['mensagem'] = 'Carro excluído com sucesso.';
+        }
+        else
+        {
+            $reposta['status']    = '0';
+            $resposta['mensagem'] = 'Carro não pôde ser excluído.';
+        }
 
-//         echo json_encode($resposta);
-//     }
-// }
+        echo json_encode($resposta);
+    }
+}

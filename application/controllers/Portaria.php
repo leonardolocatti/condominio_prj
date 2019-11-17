@@ -27,6 +27,7 @@ class Portaria extends MY_Controller {
         $this->load->setar_titulo('Portaria');
         $this->load->setar_id_body('pagina_portaria');
         $this->load->adicionar_js('portaria.js');
+        $this->load->adicionar_js('visita.js');
         $this->load->exibir('portaria', $variaveis, FALSE);
     }
 }

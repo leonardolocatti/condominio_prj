@@ -37,6 +37,11 @@ function carregar_carro_tabela (visitante_id = 0) {
             ],
         });
     }
+
+    // Carrega p dropdown de carros na portaria
+    if (window.location.href == site_url + '/portaria') {
+        buscar_dados_visitantes();
+    }
 }
 
 /**
@@ -64,7 +69,7 @@ function abrir_modal_carro_edicao (carro_id) {
 
     if (carro_id > 0) {
         $('#modal_cadastro_carros_titulo').html('Editar Carro');
-        // carregar_dados_carro(carro_id);
+        carregar_dados_carro(carro_id);
     } else {
         $('#modal_cadastro_carros_titulo').html('Cadastrar Carro');
     }
@@ -72,49 +77,50 @@ function abrir_modal_carro_edicao (carro_id) {
     $('#modal_cadastro_carros').modal('show');
 }
 
-// /**
-//  * Limpa o modal da área comum
-//  * 
-//  * @return {void}
-//  */
-// function limpar_modal_area_comum () {
-//     $('#area_comum_id').val('0');
-//     $('#area_comum_nome').val('');
-//     $('#area_comum_lotacao_maxima').val('');
-//     $('#area_comum_hora_abertura').val('');
-//     $('#area_comum_hora_fechamento').val('');
+/**
+ * Limpa o modal do carro
+ * 
+ * @return {void}
+ */
+function limpar_modal_carro () {
+    $('#carro_id').val('0');
+    $('#carro_placa').val('');
+    $('#carro_cor').val('');
+    $('#carro_marca').val('');
+    $('#carro_modelo').val('');
 
-//     limpar_validacao($('#area_comum_nome'));
-//     limpar_validacao($('#area_comum_lotacao_maxima'));
-//     limpar_validacao($('#area_comum_hora_abertura'));
-//     limpar_validacao($('#area_comum_hora_fechamento'));
-// }
+    limpar_validacao($('#carro_placa'));
+    limpar_validacao($('#carro_cor'));
+    limpar_validacao($('#carro_marca'));
+    limpar_validacao($('#carro_modelo'));
+}
 
-// /**
-//  * Busca as informações da área comum e preenche os campos do modal
-//  * 
-//  * @param  {int} area_comum_id ID da área comum que será buscada
-//  * @return {void}
-//  */
-// function carregar_dados_area_comum (area_comum_id) {
-//     $.ajax({
-//         url: site_url + '/area_comum/dados_area_comum',
-//         type: 'post',
-//         dataType: 'json',
-//         data: {
-//             area_comum_id: area_comum_id,
-//         },
-//     })
-//     .done(function (resposta) {
-//         $('#area_comum_nome').val(resposta.area_comum_nome);
-//         $('#area_comum_lotacao_maxima').val(resposta.area_comum_lotacao_maxima);
-//         $('#area_comum_hora_abertura').val(resposta.area_comum_hora_abertura);
-//         $('#area_comum_hora_fechamento').val(resposta.area_comum_hora_fechamento);
-//     })
-//     .fail(function (erro) {
-//         exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText);
-//     });
-// }
+/**
+ * Busca as informações do carro e preenche os campos do modal
+ * 
+ * @param  {int} carro_id ID do carro que será buscado
+ * @return {void}
+ */
+function carregar_dados_carro (carro_id) {
+    $.ajax({
+        url: site_url + '/carro/dados_carro',
+        type: 'post',
+        dataType: 'json',
+        data: {
+            carro_id: carro_id,
+        },
+    })
+    .done(function (resposta) {
+        $('#carro_id').val(resposta.carro_id);
+        $('#carro_placa').val(resposta.carro_placa);
+        $('#carro_cor').val(resposta.carro_cor);
+        $('#carro_marca').val(resposta.carro_marca);
+        $('#carro_modelo').val(resposta.carro_modelo);
+    })
+    .fail(function (erro) {
+        exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText);
+    });
+}
 
 /**
  * Envia as informações para o controller salvar os dados do carro no banco de dados.
@@ -181,46 +187,43 @@ function validar_campos_carro () {
     return valido;
 }
 
-// /**
-//  * Confirma a exclusão e envia os dados para o controller excluir.
-//  * 
-//  * @param  {int} area_comum_id ID da área comum que será excluída.
-//  * @return {void}
-//  */
-// function excluir_area_comum (area_comum_id) {
-//     exibir_modal('sim_nao', 'alerta', 'Deseja excluir?', 'Tem certeza que deseja excluir a área comum?',
-//         function () {
-//             $.ajax({
-//                 url: site_url + '/area_comum/excluir_area_comum',
-//                 type: 'post',
-//                 dataType: 'json',
-//                 data: {
-//                     area_comum_id: area_comum_id,
-//                 },
-//             })
-//             .done(function (resposta) {
-//                 if (resposta.status == '1') {
-//                     exibir_modal('ok', 'sucesso', 'Área comum excluída', resposta.mensagem,
-//                         function () {
-//                             carregar_area_comum_tabela();
-//                         }
-//                     );
-//                 } else {
-//                     exibir_modal('ok', 'alerta', 'Área comum não excluída', resposta.mensagem);
-//                 }
-//             })
-//             .fail(function (erro) {
-//                 exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText + '.');
-//             });            
-//         }
-//     );
-// }
+/**
+ * Confirma a exclusão e envia os dados para o controller excluir.
+ * 
+ * @param  {int} carro_id ID do carro que será excluída.
+ * @return {void}
+ */
+function excluir_carro (carro_id) {
+    exibir_modal('sim_nao', 'alerta', 'Deseja excluir?', 'Tem certeza que deseja excluir o carro?',
+        function () {
+            $.ajax({
+                url: site_url + '/carro/excluir_carro',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    carro_id: carro_id,
+                },
+            })
+            .done(function (resposta) {
+                if (resposta.status == '1') {
+                    exibir_modal('ok', 'sucesso', 'Carro excluído', resposta.mensagem,
+                        function () {
+                            carregar_carro_tabela();
+                        }
+                    );
+                } else {
+                    exibir_modal('ok', 'alerta', 'Carro não excluído', resposta.mensagem);
+                }
+            })
+            .fail(function (erro) {
+                exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText + '.');
+            });            
+        }
+    );
+}
 
-// $(document).ready(function () {
-//     carregar_area_comum_tabela();
-
-//     // Limpa os dados do modal ao fechar
-//     $('#modal_cadastro_area_comum').on('hidden.bs.modal', function () {
-//         limpar_modal_area_comum();
-//     });
-// });
+$(document).ready(function () {
+    $('#modal_cadastro_carros').on('hidden.bs.modal', function () {
+        limpar_modal_carro();
+    });
+});

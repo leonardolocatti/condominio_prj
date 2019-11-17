@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </button>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 m-auto">
-                                    <button type="submit" class="btn btn-outline-success btn-block mt-3" id="visitante_botao_registrar">
+                                    <button type="submit" class="btn btn-outline-success btn-block mt-3" id="visitante_botao_registrar" disabled>
                                         <i class="fas fa-sign-in-alt mr-2"></i>
                                         Registrar Entrada
                                     </button>
@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="caixa_conteudo">
                             <div class="row">
                                 <div class="col-12">
-                                    Visitas Atuais
+                                <table id="visita_tabela" class="table table-striped table-bordered table-sm w-100"></table>
                                 </div>
                             </div>
                         </div>

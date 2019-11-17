@@ -53,4 +53,31 @@ class Carro_Model extends MY_Model {
 
         return $resposta;
     }
+
+    /**
+     * Retorna os carros do visitante que serão inseridos no dropdown.
+     *
+     * @param  int   ID do visitante 
+     * @return array Array com os carros para inserir no dropdown.
+     */
+    public function carros_dropdown($visitante)
+    {
+        $this->db->select('carro.carro_id');
+        $this->db->select('carro.carro_placa');
+        $this->db->select('carro.carro_modelo');
+        $this->db->from('carro');
+        $this->db->where('carro.carro_excluido', 0);
+        $this->db->where('carro.carro_visitante', $visitante);
+
+        $this->db->order_by('carro.carro_modelo', 'ASC');
+
+        $carros = array();
+
+        foreach ($this->db->get()->result() as $carro)
+        {
+            $carros[$carro->carro_id] = $carro->carro_placa.' - '.$carro->carro_modelo;
+        }
+
+        return $carros;
+    }
 }

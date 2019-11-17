@@ -23,9 +23,16 @@ class Visitante extends MY_Controller {
         // Retorna os dados do visitante, tratando se é funcionário ou visitante
         if ( ! empty($res_visitante))
         {
+            // Busca os carros do visitante cadastrados no sistema
+            $this->load->model('Carro_Model');
+            $obj_carro = new Carro_Model();
+
+            $res_carros = $obj_carro->carros_dropdown($res_visitante->visitante_id);
+
             $resposta['status']    = '1';
             $resposta['tipo']      = 'visitante';
             $resposta['visitante'] = $res_visitante;
+            $resposta['carros']    = $res_carros;
         } 
         elseif ( ! empty($res_funcionario))
         {

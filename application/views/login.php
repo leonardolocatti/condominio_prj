@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 
                 <div class="form-group">
-                    <input type="text" class="form-control form-control-lg mt-4" id="login_senha" name="login_senha">
+                    <input type="password" class="form-control form-control-lg mt-4" id="login_senha" name="login_senha">
                 </div>
 
                 <button type="submit" class="btn btn-outline-success btn-block mt-4" id="login_botao_entrar">Entrar</button>
