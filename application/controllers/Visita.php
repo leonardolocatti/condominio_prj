@@ -16,12 +16,10 @@ class Visita extends MY_Controller {
         $res_visita = $obj_visita->visita_tabela($this->input->post());
 
         $visitas = array();
-        $i     = 0;
+        $i       = 0;
 
         foreach ($res_visita['obj'] as $visita)
         {
-            $morador = ! empty($visita->condomino_nome) ? $visita->condomino_nome : 'Visita desocupado';
-
             $opcoes  = '<button class="btn btn-sm btn-danger" title="Registrar saída" onclick="registrar_saida('.$visita->visita_id.')">';
             $opcoes .=     '<i class="fas fa-sign-out-alt"></i>';
             $opcoes .= '</button> ';
@@ -31,7 +29,7 @@ class Visita extends MY_Controller {
             $visitas[$i]['carro']            = $visita->carro_modelo.' - '.$visita->carro_placa;
             $visitas[$i]['condomino_nome']   = $visita->condomino_nome;
             $visitas[$i]['visita_entrada']   = $visita->visita_entrada;
-            $visitas[$i]['opcoes']         = $opcoes;
+            $visitas[$i]['opcoes']           = $opcoes;
 
             $i++;
         }
@@ -46,8 +44,8 @@ class Visita extends MY_Controller {
     }
 
     /**
-     * Recebe os dados na visita fornecidas por POST e tenta salvar no banco de dados.
-     * 
+     * Recebe os dados da visita fornecidos por POST e tenta salvar no banco de dados.
+     *
      * @return void
      */
     public function registrar_visita()
@@ -68,12 +66,12 @@ class Visita extends MY_Controller {
         if ($obj_visita->inserir() > 0)
         {
             $resposta['status']   = '1';
-            $resposta['mensagem'] = 'Visita cadastrado com sucesso.';
+            $resposta['mensagem'] = 'Visita cadastrada com sucesso.';
         }
         else
         {
             $resposta['status']   = '0';
-            $resposta['mensagem'] = 'O visita não pôde ser cadastrado';
+            $resposta['mensagem'] = 'O visita não pôde ser cadastrada.';
         }
 
         echo json_encode($resposta);
@@ -86,7 +84,7 @@ class Visita extends MY_Controller {
         $this->load->model('Visita_Model');
         $obj_visita = new Visita_Model();
 
-        $obj_visita->visita_id = $this->input->post('visita_id');
+        $obj_visita->visita_id    = $this->input->post('visita_id');
         $obj_visita->visita_ativa = '0';
         $obj_visita->visita_saida = date('Y-m-d H:i:s');
 

@@ -48,7 +48,7 @@ class Carro_Model extends MY_Model {
 
         $this->db->order_by($dados['columns'][$dados['order'][0]['column']]['name'], $dados['order'][0]['dir']);
 
-        $resposta['obj'] = $this->db->get()->result();
+        $resposta['obj']   = $this->db->get()->result();
         $resposta['total'] = $this->db->query('SELECT FOUND_ROWS() AS total')->row()->total;
 
         return $resposta;
@@ -57,7 +57,7 @@ class Carro_Model extends MY_Model {
     /**
      * Retorna os carros do visitante que serão inseridos no dropdown.
      *
-     * @param  int   ID do visitante 
+     * @param  int   ID do visitante
      * @return array Array com os carros para inserir no dropdown.
      */
     public function carros_dropdown($visitante)

@@ -40,7 +40,7 @@ function carregar_reuniao_tabela () {
 /**
  * Abre o modal de cadastro/edição de reunião.
  * 
- * @param  {int} reuniao_id ID da reunião que será editada. Se não for passado nenhum ID, será aberto como cadastro.
+ * @param  {int}  reuniao_id ID da reunião que será editada. Se não for passado nenhum ID, será aberto como cadastro.
  * @return {void}
  */
 function abrir_modal_reuniao (reuniao_id) {
@@ -73,9 +73,9 @@ function limpar_modal_reuniao () {
 }
 
 /**
- * Busca as informações da reunião e preenche os campos do modal
+ * Busca as informações da reunião e preenche os campos do modal.
  * 
- * @param  {int} reuniao_id ID da reunião que será buscada.
+ * @param  {int}  reuniao_id ID da reunião que será buscada.
  * @return {void}
  */
 function carregar_dados_reuniao (reuniao_id) {
@@ -102,7 +102,7 @@ function carregar_dados_reuniao (reuniao_id) {
  * 
  * @return {void}
  */
-function salvar_reuniao () {    
+function salvar_reuniao () {
     if (validar_campos_reuniao()) {
 
         var formulario = new FormData($('#form_reuniao')[0]);
@@ -160,7 +160,7 @@ function validar_campos_reuniao () {
 /**
  * Confirma a exclusão e envia os dados para o controller excluir.
  * 
- * @param  {int} reuniao_id ID da reunião que será excluída.
+ * @param  {int}  reuniao_id ID da reunião que será excluída.
  * @return {void}
  */
 function excluir_reuniao (reuniao_id) {
@@ -187,7 +187,7 @@ function excluir_reuniao (reuniao_id) {
             })
             .fail(function (erro) {
                 exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText + '.');
-            });            
+            });
         }
     )
 }
@@ -195,7 +195,7 @@ function excluir_reuniao (reuniao_id) {
 /**
  * Baixar ata da reunião.
  * 
- * @param  {int} reuniao_id ID da reunião que terá a ata baixada.
+ * @param  {int}  reuniao_id ID da reunião que terá a ata baixada.
  * @return {void}
  */
 function baixar_ata (reuniao_id) {

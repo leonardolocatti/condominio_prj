@@ -19,7 +19,7 @@ function validar_campos () {
 
 /**
  * Envia os dados de login para validação.
- * Caso o login seja realizado redireciona para a tela inicial.
+ * Caso o login seja realizado, redireciona para a tela inicial.
  * 
  * @return {void}
  */

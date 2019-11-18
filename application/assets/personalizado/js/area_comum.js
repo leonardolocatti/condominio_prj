@@ -287,20 +287,19 @@ function carregar_calendario () {
         type: 'post',
         dataType: 'json',
         data: {
-            
+
         },
     })
     .done(function (resposta) {
         reservas = resposta;
 
+        $('#fullcalendar').empty();
+        calendario = new FullCalendar.Calendar(document.getElementById('fullcalendar'), {
+            plugins: ['dayGrid'],
+            events: reservas,
+        });
 
-    $('#fullcalendar').empty();
-    calendario = new FullCalendar.Calendar(document.getElementById('fullcalendar'), {
-        plugins: ['dayGrid'],
-        events: reservas,
-    });
-
-    calendario.render();
+        calendario.render();
     })
     .fail(function (erro) {
         exibir_modal('ok', 'erro', 'Ocorreu um erro', 'Erro: ' + erro.status + '. ' + erro.statusText);

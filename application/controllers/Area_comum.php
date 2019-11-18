@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Area_comum extends MY_Controller {
 
     /**
-     * Exibe a página de áreas comuns
+     * Exibe a página de áreas comuns.
      */
     public function index()
     {
@@ -88,7 +88,7 @@ class Area_comum extends MY_Controller {
             else
             {
                 $resposta['status'] = '0';
-                $resposta['mensagem'] = 'Área comum não pôde ser atualizado.';
+                $resposta['mensagem'] = 'Área comum não pôde ser atualizada.';
             }
         }
         else
@@ -109,7 +109,7 @@ class Area_comum extends MY_Controller {
     }
 
     /**
-     * Retorna um json com os dados da área comum pedidi por POST.
+     * Retorna um json com os dados da área comum pedida por POST.
      * 
      * @return void
      */

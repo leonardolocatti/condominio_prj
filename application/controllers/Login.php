@@ -10,7 +10,7 @@ class Login extends CI_Controller {
      */
     public function index()
     {
-        // Se o usuário tiver uma sessão válida redireciona para a página inicial
+        // Se o usuário tiver uma sessão válida redireciona para a página inicial.
         if (isset($this->session->usuario))
         {
             redirect('home');
@@ -60,7 +60,7 @@ class Login extends CI_Controller {
     }
 
     /**
-     * Realiza o logout do usuário e retira os dados da sessao.
+     * Realiza o logout do usuário e retira os dados da sessão.
      * Método deve ser chamado por Ajax.
      * 
      * @return void

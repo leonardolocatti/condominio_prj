@@ -41,7 +41,7 @@ function carregar_condomino_tabela () {
 /**
  * Abre o modal de cadastro/edição de condôminos.
  * 
- * @param  {int} condomino_id ID do condômino que será editado. Se não for passado nenhum ID, será aberto como cadastro.
+ * @param  {int}  condomino_id ID do condômino que será editado. Se não for passado nenhum ID, será aberto como cadastro.
  * @return {void}
  */
 function abrir_modal_condomino (condomino_id = 0) {
@@ -58,7 +58,7 @@ function abrir_modal_condomino (condomino_id = 0) {
 }
 
 /**
- * Limpa o modal do lote.
+ * Limpa o modal do condômino.
  * 
  * @return {void}
  */
@@ -74,9 +74,9 @@ function limpar_modal_condomino () {
 }
 
 /**
- * Busca as informações do condômino e preench os campos do modal
+ * Busca as informações do condômino e preenche os campos do modal.
  * 
- * @param  {int} condomino_id ID do condômino que será buscado.
+ * @param  {int}  condomino_id ID do condômino que será buscado.
  * @return {void}
  */
 function carregar_dados_condomino (condomino_id) {
@@ -145,7 +145,7 @@ function validar_campos_condomino () {
     if ( ! validar_cpf($('#condomino_cpf'))) {
         valido = false;
     }
-    
+
     if ( ! validar_campo($('#condomino_nome'), false)) {
         valido = false;
     }
@@ -160,7 +160,7 @@ function validar_campos_condomino () {
 /**
  * Confirma a exclusão e envia os dados para o controller excluir.
  * 
- * @param  {int} condomino_id ID do condômino que será excluído.
+ * @param  {int}  condomino_id ID do condômino que será excluído.
  * @return {void}
  */
 function excluir_condomino (condomino_id) {

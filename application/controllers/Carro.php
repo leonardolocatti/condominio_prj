@@ -28,12 +28,12 @@ class Carro extends MY_Controller {
             $opcoes .=     '<i class="fas fa-trash"></i>';
             $opcoes .= '</button>';
 
-            $carros[$i]['carro_id'] = $carro->carro_id;
-            $carros[$i]['carro_placa'] = $carro->carro_placa;
-            $carros[$i]['carro_marca'] = $carro->carro_marca;
+            $carros[$i]['carro_id']     = $carro->carro_id;
+            $carros[$i]['carro_placa']  = $carro->carro_placa;
+            $carros[$i]['carro_marca']  = $carro->carro_marca;
             $carros[$i]['carro_modelo'] = $carro->carro_modelo;
-            $carros[$i]['carro_cor'] = $carro->carro_cor;
-            $carros[$i]['opcoes'] = $opcoes;
+            $carros[$i]['carro_cor']    = $carro->carro_cor;
+            $carros[$i]['opcoes']       = $opcoes;
 
             $i++;
         }

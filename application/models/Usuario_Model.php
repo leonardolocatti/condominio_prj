@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Usuario_Model extends MY_Model {
 
     /**
-     * Construtor com os parâmetros referentes à tabela usuario.
+     * Construtor com os parâmetros referentes à tabela usuário.
      */
     public function __construct()
     {

@@ -29,7 +29,7 @@ class Administracao extends MY_Controller {
         $view_condomino = $this->load->view('condomino', $variaveis_condomino, TRUE);
         $this->load->adicionar_js('condomino.js');
 
-        // View de administração de areas comuns
+        // View de administração de áreas comuns
         $view_areas_comuns = $this->load->view('area_comum_adm', array(), TRUE);
         $this->load->adicionar_js('area_comum.js');
 

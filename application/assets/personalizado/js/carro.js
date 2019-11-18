@@ -4,6 +4,7 @@ var carro_tabela;
 /**
  * Carrega a tabela de carros com os carros cadastrados no banco de dados.
  * 
+ * @param  {int}  visitante_id ID do visitante que terá os carros visualizados.
  * @return {void}
  */
 function carregar_carro_tabela (visitante_id = 0) {
@@ -38,7 +39,7 @@ function carregar_carro_tabela (visitante_id = 0) {
         });
     }
 
-    // Carrega p dropdown de carros na portaria
+    // Carrega o dropdown de carros na portaria
     if (window.location.href == site_url + '/portaria') {
         buscar_dados_visitantes();
     }
@@ -47,12 +48,12 @@ function carregar_carro_tabela (visitante_id = 0) {
 /**
  * Abre o modal de visualização de carros.
  * 
- * @param {int} visitante_id 
+ * @param {int}  visitante_id 
  * @return {void}
  */
 function abrir_modal_exibicao_carro (visitante_id) {
     $('#modal_exibicao_carros_titulo').html('Carros de ' + $('#visitante_nome').val());
-    
+
     carregar_carro_tabela(visitante_id);
 
     $('#modal_exibicao_carros').modal('show');
@@ -61,12 +62,10 @@ function abrir_modal_exibicao_carro (visitante_id) {
 /**
  * Abre o modal de cadastro/edição de carros.
  * 
- * @param  {int} carro_id ID do carro que será editado. Se carro_id for 0, abrirá como cadastro.
+ * @param  {int}  carro_id ID do carro que será editado. Se carro_id for 0, abrirá como cadastro.
  * @return {void}
  */
 function abrir_modal_carro_edicao (carro_id) {
-
-
     if (carro_id > 0) {
         $('#modal_cadastro_carros_titulo').html('Editar Carro');
         carregar_dados_carro(carro_id);
@@ -190,7 +189,7 @@ function validar_campos_carro () {
 /**
  * Confirma a exclusão e envia os dados para o controller excluir.
  * 
- * @param  {int} carro_id ID do carro que será excluída.
+ * @param  {int}  carro_id ID do carro que será excluído.
  * @return {void}
  */
 function excluir_carro (carro_id) {

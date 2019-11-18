@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Area_Comum_Model extends MY_Model {
 
     /**
-     * Construtor com os parâmetros referentes à tabela area comum.
+     * Construtor com os parâmetros referentes à tabela área comum.
      */
     public function __construct()
     {
@@ -43,7 +43,7 @@ class Area_Comum_Model extends MY_Model {
 
         $this->db->order_by($dados['columns'][$dados['order'][0]['column']]['name'], $dados['order'][0]['dir']);
 
-        $resposta['obj'] = $this->db->get()->result();
+        $resposta['obj']   = $this->db->get()->result();
         $resposta['total'] = $this->db->query('SELECT FOUND_ROWS() AS total')->row()->total;
 
         return $resposta;

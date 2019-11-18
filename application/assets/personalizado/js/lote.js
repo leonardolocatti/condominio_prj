@@ -87,7 +87,7 @@ function carregar_dados_lote (lote_id) {
         dataType: 'json',
         data: {
             lote_id: lote_id,
-        },        
+        },
     })
     .done(function (resposta) {
         $('#lote_numero').val(resposta.lote_numero);

@@ -41,7 +41,7 @@ function carregar_funcionario_tabela () {
 /**
  * Abre o modal de cadastro/edição de funcionários.
  * 
- * @param  {int} funcionario_id ID do funcionário que será editado. Se não for passado nenhum ID será aberto como cadastro.
+ * @param  {int}  funcionario_id ID do funcionário que será editado. Se não for passado nenhum ID será aberto como cadastro.
  * @return {void}
  */
 function abrir_modal_funcionario (funcionario_id = 0) {
@@ -74,9 +74,9 @@ function limpar_modal_funcionario () {
 }
 
 /**
- * Busca as informações do funcionário e preenche os campos do modal
+ * Busca as informações do funcionário e preenche os campos do modal.
  * 
- * @param  {int} funcionario_id ID do funcionário que será buscado.
+ * @param  {int}  funcionario_id ID do funcionário que será buscado.
  * @return {void}
  */
 function carregar_dados_funcionario (funcionario_id) {
@@ -99,7 +99,7 @@ function carregar_dados_funcionario (funcionario_id) {
 }
 
 /**
- * Envia as informações para o controller salvar os dados do condômino no banco de dados.
+ * Envia as informações para o controller salvar os dados do funcionário no banco de dados.
  * 
  * @return {void}
  */
@@ -160,7 +160,7 @@ function validar_campos_funcionario () {
 /**
  * Confirma a exclusão e envia os dados para o controller excluir.
  * 
- * @param  {int} funcionario_id ID do funcionário que será excluído.
+ * @param  {int}  funcionario_id ID do funcionário que será excluído.
  * @return {void}
  */
 function excluir_funcionario (funcionario_id) {

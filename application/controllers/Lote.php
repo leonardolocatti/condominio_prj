@@ -28,7 +28,7 @@ class Lote extends MY_Controller {
 
             $opcoes .= '<button class="btn btn-sm btn-danger" title="Deletar lote" onclick="excluir_lote('.$lote->lote_id.')">';
             $opcoes .=     '<i class="fas fa-trash"></i>';
-            $opcoes .= '</button>';
+            $opcoes .= '</button> ';
 
             $lotes[$i]['lote_id']        = $lote->lote_id;
             $lotes[$i]['lote_numero']    = $lote->lote_numero;
@@ -87,7 +87,7 @@ class Lote extends MY_Controller {
             else
             {
                 $resposta['status']   = '0';
-                $resposta['mensagem'] = 'O lote não pôde ser cadastrado';
+                $resposta['mensagem'] = 'O lote não pôde ser cadastrado.';
             }
         }
 

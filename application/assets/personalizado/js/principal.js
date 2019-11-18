@@ -48,7 +48,6 @@ function limpar_validacao (campo) {
  * @return {void}
  */
 function exibir_modal (botoes, tipo, titulo, mensagem, funcao_ok_sim = null, funcao_cancelar_nao = null) {
-    
     /* Insere a mensagem no alert correspondente ao tipo do modal. Define a cor do 
      * botão OK (quando somente este botão estará presente no modal) e do título do modal */
     var mensagem_modal;

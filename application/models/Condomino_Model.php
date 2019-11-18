@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Condomino_Model extends MY_Model {
 
     /**
-     * Construtor com os parâmetros referentes à tabela condomino.
+     * Construtor com os parâmetros referentes à tabela condômino.
      */
     public function __construct()
     {
@@ -43,7 +43,7 @@ class Condomino_Model extends MY_Model {
 
         $this->db->order_by($dados['columns'][$dados['order'][0]['column']]['name'], $dados['order'][0]['dir']);
 
-        $resposta['obj'] = $this->db->get()->result();
+        $resposta['obj']   = $this->db->get()->result();
         $resposta['total'] = $this->db->query('SELECT FOUND_ROWS() AS total')->row()->total;
 
         return $resposta;
@@ -66,7 +66,7 @@ class Condomino_Model extends MY_Model {
         $this->db->order_by('condomino.condomino_nome', 'ASC');
 
         $condominos = array(
-            '' => 'Selecione um condomino',
+            '' => 'Selecione um condômino',
         );
 
         foreach ($this->db->get()->result() as $condomino)

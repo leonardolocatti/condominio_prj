@@ -26,7 +26,7 @@ class Condomino extends MY_Controller {
 
             $opcoes .= '<button class="btn btn-sm btn-danger" title="Deletar condômino" onclick="excluir_condomino('.$condomino->condomino_id.')">';
             $opcoes .=     '<i class="fas fa-trash"></i>';
-            $opcoes .= '</button>';
+            $opcoes .= '</button> ';
 
             $condominos[$i]['condomino_id']   = $condomino->condomino_id;
             $condominos[$i]['condomino_nome'] = $condomino->condomino_nome;

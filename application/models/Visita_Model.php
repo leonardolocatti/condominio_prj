@@ -48,7 +48,7 @@ class Visita_Model extends MY_Model {
 
         $this->db->order_by($dados['columns'][$dados['order'][0]['column']]['name'], $dados['order'][0]['dir']);
 
-        $resposta['obj'] = $this->db->get()->result();
+        $resposta['obj']   = $this->db->get()->result();
         $resposta['total'] = $this->db->query('SELECT FOUND_ROWS() AS total')->row()->total;
 
         return $resposta;

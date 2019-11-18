@@ -1,7 +1,7 @@
 /**
  * Busca o visitante para saber se já está cadastrado.
- * Se já estiver preenche os dados do visitante no formulário, caso não esteja abre
- * um dialog para perguntando se deseja cadastrar o visitante.
+ * Se já estiver, preenche os dados do visitante no formulário, caso não esteja abre
+ * um dialog perguntando se deseja cadastrar o visitante.
  * 
  * @return {void}
  */
@@ -38,7 +38,7 @@ function buscar_dados_visitantes () {
                         $('.caixa_conteudo #visitante_nome').val(resposta.visitante.visitante_nome);
                         break;
                 }
-                
+
                 // Preenchendo o dropdown de carros
                 $('#visitante_carro').empty();
                 if ($(resposta.carros).length > 0) {
@@ -58,7 +58,7 @@ function buscar_dados_visitantes () {
 /**
  * Abre o modal para cadastro/edição de visitantes.
  * 
- * @param  {int} visitante_id ID do visitante que será editado. Se não for passado nenhum ID, será aberto como cadastro.
+ * @param  {int}  visitante_id ID do visitante que será editado. Se não for passado nenhum ID, será aberto como cadastro.
  * @return {void}
  */
 function abrir_modal_cadastro_visitante (visitante_id) {
@@ -138,9 +138,9 @@ function limpar_modal_cadastro_visitante () {
 }
 
 /**
- * Busca as informações do visitante e preenche os campos do modal
+ * Busca as informações do visitante e preenche os campos do modal.
  * 
- * @param  {int} visitante_id ID do visitante que será buscado.
+ * @param  {int}  visitante_id ID do visitante que será buscado.
  * @return {void}
  */
 function buscar_dados_visitantes_edicao (visitante_id) {
@@ -239,7 +239,7 @@ function limpar_registro_entrada () {
 /**
  * Registra a saída do visitante.
  * 
- * @param  {int} visita_id ID da visita
+ * @param  {int}  visita_id ID da visita
  * @return {void}
  */
 function registrar_saida (visita_id) {

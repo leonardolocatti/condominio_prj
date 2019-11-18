@@ -13,7 +13,7 @@ class Reuniao extends MY_Controller {
         $this->load->adicionar_js('reuniao.js');
         $this->load->exibir('reuniao');
     }
-    
+
     /**
      * Retorna um json com os dados das reuniões para serem inseridas na tabela.
      * 
@@ -42,11 +42,11 @@ class Reuniao extends MY_Controller {
                 $opcoes .= '</button> ';
             }
 
-            $reunioes[$i]['reuniao_id'] = $reuniao->reuniao_id;
+            $reunioes[$i]['reuniao_id']        = $reuniao->reuniao_id;
             $reunioes[$i]['reuniao_descricao'] = $reuniao->reuniao_descricao;
             $reunioes[$i]['reuniao_data_hora'] = $reuniao->reuniao_data_hora;
             $reunioes[$i]['reuniao_status']    = $reuniao->reuniao_status;
-            $reunioes[$i]['opcoes'] = $opcoes;
+            $reunioes[$i]['opcoes']            = $opcoes;
 
             $i++;
         }
@@ -60,9 +60,9 @@ class Reuniao extends MY_Controller {
         echo json_encode($resposta);
     }
 
-    /** 
+    /**
      * Recebe os dados da reunião fornecidas por POST e tenta salvar no banco de dados.
-     * 
+     *
      * @return void
      */
     public function salvar_reuniao()
@@ -113,7 +113,7 @@ class Reuniao extends MY_Controller {
     }
 
     /**
-     * Baixa a atua da reunião se disponível.
+     * Baixa a ataa da reunião se disponível.
      * 
      * @param  int $reuniao_id ID da reunião que terá a ata baixada.
      * @return void
