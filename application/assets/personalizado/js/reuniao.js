@@ -33,6 +33,18 @@ function carregar_reuniao_tabela () {
                 { 'title': 'Status', 'className': 'align-middle', 'name': 'reuniao.reuniao_status', 'data': 'reuniao_status' },
                 { 'title': 'Opções', 'className': 'align-middle', 'data': 'opcoes', 'sortable': false, 'width': '80px' },
             ],
+            'dom': 'B',
+            'buttons': [
+                {
+                    extend: 'pdfHtml5',
+                    text: 'PDF',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        }
+                    }
+                }
+            ],
         });
     }
 }

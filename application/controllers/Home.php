@@ -18,6 +18,8 @@ class Home extends MY_Controller {
 
         $this->load->setar_titulo('Home');
         $this->load->setar_id_body('pagina_home');
+        $this->load->adicionar_js('area_comum.js');
+        $this->load->adicionar_js('visita.js');
         $this->load->exibir('home');
     }
 }

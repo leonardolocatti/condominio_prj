@@ -41,8 +41,13 @@ class Visita_Model extends MY_Model {
         $this->db->join('visitante', 'visita.visita_visitante = visitante.visitante_id');
         $this->db->join('carro', 'visita.visita_carro = carro.carro_id');
         $this->db->join('condomino', 'visita.visita_condomino = condomino.condomino_id');
+        $this->db->join('usuario', 'usuario.usuario_login = condomino.condomino_cpf');
         $this->db->where('visita.visita_excluido', 0);
         $this->db->where('visita.visita_ativa', 1);
+
+        if ( ! empty($dados['usuario'])) {
+            $this->db->where('usuario.usuario_id', $dados['usuario']);
+        }
 
         $this->db->limit($dados['length'], $dados['start']);
 

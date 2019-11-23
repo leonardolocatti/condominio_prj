@@ -24,7 +24,7 @@ function carregar_visita_tabela () {
                 'type': 'post',
                 'dataType': 'json',
                 'data': function (data) {
-
+                    data.usuario = $('#usuario_busca').val();
                 },
             },
             'columns': [
@@ -34,6 +34,18 @@ function carregar_visita_tabela () {
                 { 'title': 'Condômino', 'className': 'align-middle', 'name': 'condomino.condomino_nome', 'data': 'condomino_nome', 'width': '' },
                 { 'title': 'Entrada', 'className': 'align-middle', 'name': 'visita.visita_entrada', 'data': 'visita_entrada', 'width': '' },
                 { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '60px' },
+            ],
+            'dom': 'B',
+            'buttons': [
+                {
+                    extend: 'pdfHtml5',
+                    text: 'PDF',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        }
+                    }
+                }
             ],
         });
     }

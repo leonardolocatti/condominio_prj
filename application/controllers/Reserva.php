@@ -11,14 +11,14 @@ class Reserva extends MY_Controller {
         $this->load->model('Reserva_Model');
         $obj_reserva = new Reserva_Model();
 
-        $res_reserva = $obj_reserva->carregar_reservas();
+        $res_reserva = $obj_reserva->carregar_reservas($this->input->post('usuario'));
 
         $reservas = array();
         $i     = 0;
 
         foreach ($res_reserva['obj'] as $reserva) 
         {
-            $reservas[$i]['title'] = $reserva->reserva_area_comum;
+            $reservas[$i]['title'] = $reserva->area_comum_nome;
             $reservas[$i]['start'] = $reserva->reserva_data_inicio;
             $reservas[$i]['end']   = $reserva->reserva_data_fim;
 

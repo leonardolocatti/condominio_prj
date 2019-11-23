@@ -33,7 +33,19 @@ function carregar_condomino_tabela () {
                 { 'title': 'CPF', 'className': 'align-middle', 'name': 'condomino.condomino_cpf', 'data': 'condomino_cpf', 'width': '100px' },
                 { 'title': 'Lote', 'className': 'align-middle', 'name': 'lote.lote_numero', 'data': 'condomino_lote' },
                 { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '60px'},
-            ]
+            ],
+            'dom': 'B',
+            'buttons': [
+                {
+                    extend: 'pdfHtml5',
+                    text: 'PDF',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        }
+                    }
+                }
+            ],
         });
     }
 }

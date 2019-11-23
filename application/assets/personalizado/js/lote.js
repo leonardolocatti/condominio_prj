@@ -35,6 +35,18 @@ function carregar_lote_tabela () {
                 { 'title': 'Morador', 'className': 'align-middle', 'name': 'condomino.condomino_nome', 'data': 'morador', 'width': '200px' },
                 { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '60px' },
             ],
+            'dom': 'B',
+            'buttons': [
+                {
+                    extend: 'pdfHtml5',
+                    text: 'PDF',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        }
+                    }
+                }
+            ],
         });
     }
 }

@@ -35,6 +35,18 @@ function carregar_area_comum_tabela () {
                 { 'title': 'Fecha', 'className': 'align-middle', 'name': 'area_comum.area_comum_hora_fechamento', 'data': 'area_comum_hora_fechamento', 'width': '70px' },
                 { 'title': 'Opções', 'className': 'align-middle text-center', 'data': 'opcoes', 'sortable': false, 'width': '90px'},
             ],
+            'dom': 'B',
+            'buttons': [
+                {
+                    extend: 'pdfHtml5',
+                    text: 'PDF',
+                    exportOptions: {
+                        modifier: {
+                            page: 'current'
+                        }
+                    }
+                }
+            ],
         });
     }
 }
@@ -287,7 +299,7 @@ function carregar_calendario () {
         type: 'post',
         dataType: 'json',
         data: {
-
+            usuario: $('#usuario_busca').val(),
         },
     })
     .done(function (resposta) {
